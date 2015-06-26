@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+	before_action :require_user, only: [:index, :show]
+
 	def index
     @users = User.all
   end
-  
+
 	def new
 		@user = User.new
 	end
@@ -16,9 +18,6 @@ class UsersController < ApplicationController
 	    redirect_to '/signup' 
 	  end 
 	end
-
-
-
 
 	private
   	def user_params

@@ -1,3 +1,7 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sessions-photo {
+    background: transparent asset-url("cameron3.jpg") no-repeat center center / cover;
+}

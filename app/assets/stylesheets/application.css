@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+@charset "utf-8";
+@font-face {
+  font-family: "Montserrat";
+  src: url('../fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: "Goudy-Italic";
+  src: url('../fonts/OFLGoudyStMTT-Italic.ttf');
+}
+
+@font-face {
+  font-family: "Goudy";
+  src: url('../fonts/OFLGoudyStMTT.ttf');
+}
+
+div.photo-bar {
+    z-index: 3;
+    position: relative;
+    height: 600px;
+}
+
+h1{
+	font-family: Goudy;
+	color: #223469;
+}
+
+div.space{
+	height: 20px;
+}

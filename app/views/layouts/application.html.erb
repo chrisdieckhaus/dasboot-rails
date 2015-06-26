@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DasbootRails</title>
+  <title>Das Boot Members</title>
+  <%= stylesheet_link_tag "bootstrap" %>
+  <%= javascript_include_tag  "jquery" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<%= render '/layouts/navbar' %>
 
 <% if current_user %> 
   <ul> 

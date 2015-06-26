@@ -1,0 +1,56 @@
+.navbar{
+    background-image: linear-gradient(to bottom, #ffffff 0%, #Ffffff 100%);
+    color: #102A78;
+    box-shadow:0 0 10px black;
+
+}
+
+.navbar-default a, .navbar-default a:visited{
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #102A78;
+    line-height: 1.5;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding-bottom: 5px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-brand > a{
+    line-height: 1.5;
+    color: #102A78;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding-bottom: 5px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-brand > a:hover{
+    border-bottom: 2px solid #102a78;
+    color: #102A78;
+}
+
+
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{
+
+    color: #102A78;
+    border-bottom: 2px solid #102a78;
+}
+
+.navbar{
+    min-height: 75px;
+}
+
+button.navbar-toggle.collapsed{
+    margin-top: 20px;
+}
+
+
