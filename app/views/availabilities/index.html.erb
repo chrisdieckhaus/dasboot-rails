@@ -11,6 +11,9 @@
 		<li>
 			<%= link_to 'Edit', edit_availability_path(av) %>
 		</li>
+		<li>
+			<%= button_to 'x', availability_path(av), method: :delete %>
+		</li>
 	</ul>
 <% end %>
 <br>
