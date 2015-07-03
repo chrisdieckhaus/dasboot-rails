@@ -1,0 +1,7 @@
+<h1>Edit availability</h1>
+
+<%= form_for(@av) do |f| %>
+  <%= f.date_select :day_date, :min => Date.today %>
+  <%= f.text_field :times, :placeholder => "When are you busy?" %>
+  <%= f.submit "Save availability", class: "btn-submit" %>
+<% end %>
