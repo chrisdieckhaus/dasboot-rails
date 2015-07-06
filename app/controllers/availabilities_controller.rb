@@ -49,6 +49,10 @@ class AvailabilitiesController < ApplicationController
     	redirect_to '/availabilities'
   	end
 
+  	def show
+  		@avs = Availability.all
+  	end
+
 	private
   	def av_params
     	params.permit(:day_date, :times)

@@ -5,18 +5,14 @@
 <table class="table">
     <tr>
 		<th>Date</th>
-		<th>Day</th>
 		<th>Times</th>
 		<th></th>
 		<th></th>
 	</tr>
-	<% @avs.each do |av| %>
+	<% current_user.availabilities.sort_by{|a| [a.day_date, a.times] }.each do |av| %>
 		<tr>
 			<td>
-				<%= av.day_date %>
-			</td>
-			<td>
-				Monday
+				<%= av.day_date.strftime('%A %-m/%-d') %>
 			</td>
 			<td>
 				<%= av.times %>
