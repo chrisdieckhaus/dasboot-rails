@@ -2,21 +2,34 @@
 
 <h1>These are your availabilities.</h1>
 
-<% @avs.each do |av| %>
-	<ul>
-		<li>
-			<%= av.day_date %>
-		</li>
-		<li>
-			<%= av.times %>
-		</li>
-		<li>
-			<%= link_to 'Edit', edit_availability_path(av) %>
-		</li>
-		<li>
-			<%= button_to 'x', availability_path(av), method: :delete %>
-		</li>
-	</ul>
-<% end %>
+<table class="table">
+    <tr>
+		<th>Date</th>
+		<th>Day</th>
+		<th>Times</th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @avs.each do |av| %>
+		<tr>
+			<td>
+				<%= av.day_date %>
+			</td>
+			<td>
+				Monday
+			</td>
+			<td>
+				<%= av.times %>
+			</td>
+			<td>
+				<%= link_to 'Edit', edit_availability_path(av) %>
+			</td>
+			<td>
+				<%= button_to 'x', availability_path(av), method: :delete %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
 <br>
 <%= link_to 'Add new availability', new_availability_path %>

@@ -31,10 +31,15 @@ class AvailabilitiesController < ApplicationController
 
 	def update
 		@av = Availability.find(params[:id])
-		if @av.update(av_params)
+		avail = params[:availability]
+		date = Date.new avail["day_date(1i)"].to_i, avail["day_date(2i)"].to_i, avail["day_date(3i)"].to_i
+		@av.day_date = date
+		@av.times = avail[:times]
+		@av.save
+		if @av.save
 			redirect_to '/availabilities'
 		else
-			render '/availabilities'
+			render '/availabilities/edit/#{params[:id]}'
 		end
 	end
 
