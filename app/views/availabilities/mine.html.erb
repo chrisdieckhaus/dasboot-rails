@@ -1,6 +1,6 @@
 <div class="space"></div>
 
-<h1>Availabilities for <%= @user.first_name %> <%= @user.last_name %></h1>
+<h1>My Availabilities</h1>
 
 <table class="table">
     <tr>
@@ -9,7 +9,7 @@
 		<th></th>
 		<th></th>
 	</tr>
-	<% @avs.sort_by{|a| [a.day_date, a.times] }.each do |av| %>
+	<% current_user.availabilities.sort_by{|a| [a.day_date, a.times] }.each do |av| %>
 		<tr>
 			<td>
 				<%= av.day_date.strftime('%A %-m/%-d') %>
@@ -27,4 +27,4 @@
 	<% end %>
 </table>
 
-<br>
+<%= link_to 'Add new availability', new_availability_path %>

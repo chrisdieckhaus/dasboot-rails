@@ -16,7 +16,8 @@
     <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if current_user %> 
-          <li><a id="uname"><%= "#{current_user.first_name} #{current_user.last_name}" %></a></li> 
+          <li><%= link_to "Times", availabilities_path %>
+          <li><%= link_to "#{current_user.first_name} #{current_user.last_name}", '/profile' %></a></li> 
           <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
         <% else %>
           <li><%= link_to "Login", 'login' %></a></li> 

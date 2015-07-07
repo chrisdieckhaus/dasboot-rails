@@ -18,7 +18,7 @@ class AvailabilitiesController < ApplicationController
 	  @av.times = avail[:times]
 	  @av.save
 	  if @av.save 
-	    redirect_to '/availabilities' 
+	    redirect_to '/my-availabilities' 
 	  else 
 	    redirect_to '/availabilities/new' 
 	  end 
@@ -50,7 +50,11 @@ class AvailabilitiesController < ApplicationController
   	end
 
   	def show
-  		@avs = Availability.all
+  		@avs = Availability.where(:user_id => params[:id] )
+  		@user = User.find(params[:id])
+  	end
+
+  	def mine
   	end
 
 	private
