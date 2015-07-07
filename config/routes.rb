@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get 'profile' => 'availabilities#mine'
   resources :users
 
   # You can have the root of your site routed with "root"
   root 'users#index'
+
+  resources :availabilities
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day_date: 2015-07-02
+  times: MyString
+  references: 
+
+two:
+  day_date: 2015-07-02
+  times: MyString
+  references: 
