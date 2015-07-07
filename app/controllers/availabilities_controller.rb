@@ -18,9 +18,9 @@ class AvailabilitiesController < ApplicationController
 	  @av.times = avail[:times]
 	  @av.save
 	  if @av.save 
-	    redirect_to '/my-availabilities' 
+	    redirect_to '/profile'
 	  else 
-	    redirect_to '/availabilities/new' 
+	    redirect_to new_availability_path 
 	  end 
 	end
 
@@ -37,7 +37,7 @@ class AvailabilitiesController < ApplicationController
 		@av.times = avail[:times]
 		@av.save
 		if @av.save
-			redirect_to '/availabilities'
+			redirect_to availabilities_path
 		else
 			render '/availabilities/edit/#{params[:id]}'
 		end
@@ -46,7 +46,7 @@ class AvailabilitiesController < ApplicationController
 	def destroy
     	@av = Availability.find(params[:id])
     	@av.destroy
-    	redirect_to '/availabilities'
+    	redirect_to availabilities_path
   	end
 
   	def show
