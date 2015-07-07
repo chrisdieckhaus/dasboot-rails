@@ -1,3 +1,5 @@
 <div class="space"></div>
 
 <h1><%= @schedule.schedule_name %></h1>
+
+<h3><%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %></h3
