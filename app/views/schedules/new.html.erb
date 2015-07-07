@@ -1,0 +1,15 @@
+<div class="space"></div>
+
+<h1>New Schedule</h1>
+
+<%= form_for(@schedule) do |f| %>
+	<%= f.text_field :schedule_name, :placeholder=>"Schedule name"%>
+	<br>
+	<%= f.label :start_date %>
+	<%= f.date_select :start_date, :min => Date.today %>
+	<br>
+	<%= f.label :end_date %>
+	<%= f.date_select :end_date, :min => Date.today %>
+	<br>
+	<%= f.submit "Create Schedule", class: "btn-submit" %>
+<% end %>

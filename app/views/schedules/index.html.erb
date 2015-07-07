@@ -1,0 +1,40 @@
+<div class="space"></div>
+
+<h1>This is the listing of schedules.</h1>
+
+<table class="table">
+    <tr>
+    	<th>Schedule</th>
+		<th>Start Date</th>
+		<th>End Date</th>
+		<% if current_user.role == "admin" %>
+			<th></th>
+			<th></th>
+		<% end %>
+	</tr>
+<% @schedules.sort_by{|s| s.start_date }.each do |sched| %>
+	<tr>
+		<td>
+			<%= link_to sched.schedule_name, schedule_path(sched) %>
+		</td>
+		<td>
+			<%= sched.start_date.strftime('%A %-m/%-d') %>
+		</td>
+		<td>
+			<%= sched.end_date.strftime('%A %-m/%-d') %>
+		</td>
+	<% if current_user.role == "admin" %>
+		<td>
+			<%= link_to 'Edit', edit_schedule_path(sched) %>
+		</td>
+		<td>
+			<%= button_to 'x', schedule_path(sched), method: :delete %>
+		</td>
+	<% end %>
+	</tr>
+<% end %>
+</table>
+
+<% if current_user.role == "admin" %>
+	<%= link_to "Create a new schedule", new_schedule_path %>
+<% end %>

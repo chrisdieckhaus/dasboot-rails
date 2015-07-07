@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :availabilities
 
+  resources :schedules
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

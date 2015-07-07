@@ -1,0 +1,13 @@
+<div class="space"></div>
+
+<h1><%= current_user.first_name %></h1>
+
+<%= form_for(@user) do |f| %>
+	<%= f.text_field :first_name %>
+	<%= f.text_field :last_name %>
+	<%= f.email_field :email %>
+	<% if @user.role == 'admin' %>
+		<%= f.text_field :role %>
+	<% end %>
+	<%= f.submit "Update account", class: "btn-submit" %>
+<% end %>
