@@ -11,9 +11,10 @@
 		<th></th>
 	</tr>
 <% @avs.sort_by{|a| [a.day_date, a.times] }.each do |av| %>
+	<% u = User.find(av.user_id) %>
 	<tr>
 		<td>
-			<%= link_to User.find(av.user_id).first_name, user_path(av.user_id) %>
+			<%= link_to u.first_name, user_path(av.user_id) %>
 		</td>
 		<td>
 			<%= av.day_date.strftime('%A %-m/%-d') %>
@@ -22,14 +23,18 @@
 			<%= av.times %>
 		</td>
 		<td>
-			<%= link_to 'Edit', edit_availability_path(av) %>
+			<%= link_to 'Edit', edit_availability_path(av) if u == current_user || current_user.role == 'admin' %>
 		</td>
 		<td>
-			<%= button_to 'x', availability_path(av), method: :delete %>
+			<%= button_to 'x', availability_path(av), method: :delete if u == current_user || current_user.role == 'admin' %>
 		</td>
 	</tr>
 <% end %>
 </table>
+
+<%= link_to 'Add new availability', new_availability_path %>
+
+
 
 
 
