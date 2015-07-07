@@ -1,0 +1,26 @@
+<div class="space"></div>
+
+<h1>This is the listing of schedules.</h1>
+
+<table class="table">
+    <tr>
+    	<th>Schedule</th>
+		<th>Start Date</th>
+		<th>End Date</th>
+	</tr>
+<% @schedules.each do |sched| %>
+	<tr>
+		<td>
+			<%= link_to sched.schedule_name, schedule_path(sched) %>
+		</td>
+		<td>
+			<%= sched.start_date.strftime('%A %-m/%-d') %>
+		</td>
+		<td>
+			<%= sched.end_date.strftime('%A %-m/%-d') %>
+		</td>
+	</tr>
+<% end %>
+</table>
+
+<%= link_to "Create a new schedule", new_schedule_path %>
