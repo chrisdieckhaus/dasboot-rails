@@ -19,6 +19,12 @@
 		<td>
 			<%= sched.end_date.strftime('%A %-m/%-d') %>
 		</td>
+		<td>
+			<%= link_to 'Edit', edit_schedule_path(sched) %>
+		</td>
+		<td>
+			<%= button_to 'x', schedule_path(sched), method: :delete %>
+		</td>
 	</tr>
 <% end %>
 </table>
