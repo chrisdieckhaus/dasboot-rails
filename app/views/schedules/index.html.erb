@@ -7,8 +7,10 @@
     	<th>Schedule</th>
 		<th>Start Date</th>
 		<th>End Date</th>
+		<th></th>
+		<th></th>
 	</tr>
-<% @schedules.each do |sched| %>
+<% @schedules.sort_by{|s| s.start_date }.each do |sched| %>
 	<tr>
 		<td>
 			<%= link_to sched.schedule_name, schedule_path(sched) %>
