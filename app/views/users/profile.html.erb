@@ -1,0 +1,42 @@
+<div class="space"></div>
+
+<h1>My Availabilities</h1>
+
+<table class="table">
+    <tr>
+		<th>Date</th>
+		<th>Times</th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @user.availabilities.sort_by{|a| [a.day_date, a.times] }.each do |av| %>
+		<tr>
+			<td>
+				<%= av.day_date.strftime('%A %-m/%-d') %>
+			</td>
+			<td>
+				<%= av.times %>
+			</td>
+			<td>
+				<%= link_to 'Edit', edit_availability_path(av) %>
+			</td>
+			<td>
+				<%= button_to 'x', availability_path(av), method: :delete %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Add new availability', new_availability_path %>
+
+<br> 
+
+<%= form_for(@user) do |f| %>
+	<%= f.text_field :first_name %>
+	<%= f.text_field :last_name %>
+	<%= f.email_field :email %>
+	<% if current_user.role == 'admin' %>
+		<%= f.text_field :role %>
+	<% end %>
+	<%= f.submit "Update account", class: "btn-submit" %>
+<% end %>
