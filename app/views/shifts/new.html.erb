@@ -1,0 +1,8 @@
+<div class="space"></div>
+
+<h1>New shift for <%= @schedule.schedule_name %></h1>
+
+<%= form_for(@shift) do |f| %>
+  <%= f.date_select :date, :min => Date.today %>
+  <%= f.submit "Create shift", class: "btn-submit" %>
+<% end %>

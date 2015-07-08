@@ -2,4 +2,6 @@
 
 <h1><%= @schedule.schedule_name %></h1>
 
-<h3><%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %></h3
+<h3><%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %></h3>
+
+<%= link_to "Add shift", schedule_shifts_new_path(@schedule) %>
