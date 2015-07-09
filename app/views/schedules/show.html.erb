@@ -4,11 +4,12 @@
 
 <h3><%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %></h3>
 
-<% @schedule.shifts.each do |shift| %>
+<% @schedule.shifts.sort_by{|s| s.start_time }.each do |shift| %>
 	<% u = User.find(shift.user_id) %>
 	<%= u.first_name %>
-	<%= shift.start_time.strftime('%H:%M') %>
+	<%= shift.start_time.strftime('%A %-m/%-d %H:%M') %>
 	<%= shift.end_time.strftime('%H:%M') %>
+	<%= link_to "Edit", edit_shift_path(shift) %>
 	<br>
 <% end %>
 
