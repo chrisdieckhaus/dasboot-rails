@@ -1,5 +1,38 @@
 <div class="space"></div>
 
+<h1>My Schedule</h1>
+
+<table class="table">
+    <tr>
+		<th>Date</th>
+		<th>Start Time</th>
+		<th>End Time</th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @user.shifts.sort_by{|s| s.start_time }.each do |shift| %>
+		<tr>
+			<td>
+				<%= shift.start_time.strftime('%A %-m/%-d') %>
+			</td>
+			<td>
+				<%= shift.start_time.strftime('%H:%M') %>
+			</td>
+			<td>
+				<%= shift.end_time.strftime('%H:%M') %>
+			</td>
+			<td>
+				<%= link_to "Edit", edit_shift_path(shift) if current_user.role == 'admin' %>
+			</td>
+			<td>
+				<%= button_to 'x', shift_path(shift), method: :delete if current_user.role == 'admin' %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<br> 
+
 <h1>My Availabilities</h1>
 
 <table class="table">
