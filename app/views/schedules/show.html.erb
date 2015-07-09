@@ -4,14 +4,43 @@
 
 <h3><%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %></h3>
 
-<% @schedule.shifts.sort_by{|s| s.start_time }.each do |shift| %>
-	<% u = User.find(shift.user_id) %>
-	<%= u.first_name %>
-	<%= shift.start_time.strftime('%A %-m/%-d %H:%M') %>
-	<%= shift.end_time.strftime('%H:%M') %>
-	<%= link_to "Edit", edit_shift_path(shift) if current_user.role == 'admin' %>
-	<%= button_to 'x', shift_path(shift), method: :delete if current_user.role == 'admin' %>
-	<br>
-<% end %>
+<table class="table">
+    <tr>
+    	<th>Day</th>
+		<th>Start Time</th>
+		<th>End Time</th>
+		<th>Member</th>
+		<% if current_user.role == "admin" %>
+			<th></th>
+			<th></th>
+		<% end %>
+	</tr>
+	<% @schedule.shifts.sort_by{|s| s.start_time }.each do |shift| %>
+		<tr>
+			<td>
+				<%= shift.start_time.strftime('%A %-m/%-d') %>
+			</td>
+			<td>
+				<%= shift.start_time.strftime('%H:%M') %>
+			</td>
+			<td>
+				<%= shift.end_time.strftime('%H:%M') %>
+			</td>
+			<td>
+				<% u = User.find(shift.user_id) %>
+				<%= link_to u.first_name, user_path(u.id) %>
+			</td>
+		<% if current_user.role == "admin" %>
+			<td>
+				<%= link_to "Edit", edit_shift_path(shift) %>
+			</td>
+			<td>
+				<%= button_to 'x', shift_path(shift), method: :delete %>
+			</td>
+		<% end %>
+		</tr>
+	<% end %>
+</table>
 
-<%= link_to "Add shift", schedule_shifts_new_path(@schedule) %>
+
+<%= link_to "Add shift", schedule_shifts_new_path(@schedule) if current_user.role == 'admin' %>
