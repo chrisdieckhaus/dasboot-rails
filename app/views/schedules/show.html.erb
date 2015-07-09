@@ -9,7 +9,8 @@
 	<%= u.first_name %>
 	<%= shift.start_time.strftime('%A %-m/%-d %H:%M') %>
 	<%= shift.end_time.strftime('%H:%M') %>
-	<%= link_to "Edit", edit_shift_path(shift) %>
+	<%= link_to "Edit", edit_shift_path(shift) if current_user.role == 'admin' %>
+	<%= button_to 'x', shift_path(shift), method: :delete if current_user.role == 'admin' %>
 	<br>
 <% end %>
 

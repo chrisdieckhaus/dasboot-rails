@@ -46,6 +46,13 @@ class ShiftsController < ApplicationController
 		end 
 	end
 
+	def destroy
+    	@shift = Shift.find(params[:id])
+    	schedule_id = @shift.schedule_id
+    	@shift.destroy
+    	redirect_to schedule_path(schedule_id)
+  	end
+
 	private
   	def shift_params
     	params.permit(:date, :start_time, :end_time)
