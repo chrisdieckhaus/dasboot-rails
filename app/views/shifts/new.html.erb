@@ -2,7 +2,17 @@
 
 <h1>New shift for <%= @schedule.schedule_name %></h1>
 
+<% user_names = @users.map{|u| u.first_name} %>
+
 <%= form_for(@shift) do |f| %>
-  <%= f.date_select :date, :min => Date.today %>
-  <%= f.submit "Create shift", class: "btn-submit" %>
+	<%= f.hidden_field :schedule_id, :value => @schedule.id %>
+	<%= f.collection_select(:user_id, User.all, :id, :first_name, :prompt => true) %>
+	<br>
+	<%= f.label :start_time %>
+	<%= f.datetime_select :start_time, :discard_year => true %>
+	<br>
+	<%= f.label :end_time %>
+	<%= f.datetime_select :end_time, :discard_year => true %>
+	<br>
+	<%= f.submit "Create shift", class: "btn-submit" %>
 <% end %>

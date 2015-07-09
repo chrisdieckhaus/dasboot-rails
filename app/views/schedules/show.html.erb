@@ -4,4 +4,12 @@
 
 <h3><%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %></h3>
 
+<% @schedule.shifts.each do |shift| %>
+	<% u = User.find(shift.user_id) %>
+	<%= u.first_name %>
+	<%= shift.start_time.strftime('%H:%M') %>
+	<%= shift.end_time.strftime('%H:%M') %>
+	<br>
+<% end %>
+
 <%= link_to "Add shift", schedule_shifts_new_path(@schedule) %>

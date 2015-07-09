@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(version: 20150708023040) do
 
   create_table "days", force: :cascade do |t|
     t.integer  "availability_id"
-    t.date     "day_date"
-    t.text     "times"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "day_name"
+    t.date     "day_date"
+    t.text     "times"
   end
 
   add_index "days", ["availability_id"], name: "index_days_on_availability_id"
