@@ -1,5 +1,7 @@
 <div class="space"></div>
 
-<h1>Welcome to the site, <%=current_user.first_name%>.</h1>
+<h1>Welcome to Das Boot.</h1>
 
-<%= link_to 'See my availabilities', '/profile' %>
+<% @users.each do |u| %>
+	<li><%= u.first_name %> <%= u.last_name %></li>
+<% end %>
