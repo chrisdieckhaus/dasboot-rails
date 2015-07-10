@@ -11,29 +11,15 @@
 		<th></th>
 	</tr>
 	<% @user.shifts.sort_by{|s| s.start_time }.each do |shift| %>
-		<tr>
-			<td>
-				<%= shift.start_time.strftime('%A %-m/%-d') %>
-			</td>
-			<td>
-				<%= shift.start_time.strftime('%H:%M') %>
-			</td>
-			<td>
-				<%= shift.end_time.strftime('%H:%M') %>
-			</td>
-			<td>
-				<%= link_to "Edit", edit_shift_path(shift) if current_user.role == 'admin' %>
-			</td>
-			<td>
-				<%= button_to 'x', shift_path(shift), method: :delete if current_user.role == 'admin' %>
-			</td>
-		</tr>
+		<%= render "/schedules/shift_table", shift: shift %>
 	<% end %>
 </table>
 
 <br> 
 
 <h1>My Availabilities</h1>
+
+These are the times I'm <strong>not</strong> available.
 
 <table class="table">
     <tr>
@@ -43,20 +29,7 @@
 		<th></th>
 	</tr>
 	<% @user.availabilities.sort_by{|a| [a.day_date, a.times] }.each do |av| %>
-		<tr>
-			<td>
-				<%= av.day_date.strftime('%A %-m/%-d') %>
-			</td>
-			<td>
-				<%= av.times %>
-			</td>
-			<td>
-				<%= link_to 'Edit', edit_availability_path(av) %>
-			</td>
-			<td>
-				<%= button_to 'x', availability_path(av), method: :delete %>
-			</td>
-		</tr>
+		<%= render "/availabilities/av_table", av: av %>
 	<% end %>
 </table>
 

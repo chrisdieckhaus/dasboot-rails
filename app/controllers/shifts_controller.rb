@@ -3,7 +3,6 @@ class ShiftsController < ApplicationController
 		@users = User.all 
 		@schedule = Schedule.find(params[:schedule_id])
 		@shift = Shift.new(shift_params)
-		puts @shift
 	end
 
 	def create
@@ -17,6 +16,7 @@ class ShiftsController < ApplicationController
 		@shift.end_time = end_time
 		@shift.user_id = shift_p["user_id"]
 		@shift.schedule_id = shift_p["schedule_id"]
+		@shift.night_shift = shift_p["night_shift"]
 		if good_times && @shift.save
 			redirect_to schedule_path(shift_p['schedule_id'])
 		else 
@@ -39,6 +39,7 @@ class ShiftsController < ApplicationController
 		@shift.end_time = end_time
 		@shift.user_id = shift_p["user_id"]
 		@shift.schedule_id = shift_p["schedule_id"]
+		@shift.night_shift = shift_p["night_shift"]
 		if good_times && @shift.save
 			redirect_to schedule_path(shift_p['schedule_id'])
 		else 
@@ -55,6 +56,6 @@ class ShiftsController < ApplicationController
 
 	private
   	def shift_params
-    	params.permit(:date, :start_time, :end_time)
+    	params.permit(:date, :start_time, :end_time, :night_shift)
   	end
 end

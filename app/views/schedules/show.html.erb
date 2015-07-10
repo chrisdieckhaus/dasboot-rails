@@ -16,31 +16,11 @@
 		<% end %>
 	</tr>
 	<% @schedule.shifts.sort_by{|s| s.start_time }.each do |shift| %>
-		<tr>
-			<td>
-				<%= shift.start_time.strftime('%A %-m/%-d') %>
-			</td>
-			<td>
-				<%= shift.start_time.strftime('%H:%M') %>
-			</td>
-			<td>
-				<%= shift.end_time.strftime('%H:%M') %>
-			</td>
-			<td>
-				<% u = User.find(shift.user_id) %>
-				<%= link_to u.first_name, user_path(u.id) %>
-			</td>
-		<% if current_user.role == "admin" %>
-			<td>
-				<%= link_to "Edit", edit_shift_path(shift) %>
-			</td>
-			<td>
-				<%= button_to 'x', shift_path(shift), method: :delete %>
-			</td>
-		<% end %>
-		</tr>
+		<%= render "shift_table", shift: shift %>
 	<% end %>
 </table>
+
+*Note: this is the night shift, so it actually starts the next day. For example Friday night (1/12) starting at 2:30am means although it's a Friday night shift, you'll actually be starting at 2:30am on Saturday 1/13.
 
 
 <%= link_to "Add shift", schedule_shifts_new_path(@schedule) if current_user.role == 'admin' %>
