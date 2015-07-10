@@ -14,7 +14,11 @@ Rails.application.routes.draw do
 
   resources :availabilities
 
-  resources :schedules
+  resources :schedules do
+    get 'shifts/new' => 'shifts#new'
+  end
+  
+  resources :shifts 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
