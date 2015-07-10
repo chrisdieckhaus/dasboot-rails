@@ -2,4 +2,25 @@
 
 <h1><%= @schedule.schedule_name %></h1>
 
-<h3><%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %></h3
+<h3><%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %></h3>
+
+<table class="table">
+    <tr>
+    	<th>Day</th>
+		<th>Start Time</th>
+		<th>End Time</th>
+		<th>Member</th>
+		<% if current_user.role == "admin" %>
+			<th></th>
+			<th></th>
+		<% end %>
+	</tr>
+	<% @schedule.shifts.sort_by{|s| s.start_time }.each do |shift| %>
+		<%= render "shift_table", shift: shift %>
+	<% end %>
+</table>
+
+*Note: this is the night shift, so it actually starts the next day. For example Friday night (1/12) starting at 2:30am means although it's a Friday night shift, you'll actually be starting at 2:30am on Saturday 1/13.
+
+
+<%= link_to "Add shift", schedule_shifts_new_path(@schedule) if current_user.role == 'admin' %>

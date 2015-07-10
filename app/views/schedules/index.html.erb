@@ -35,6 +35,4 @@
 <% end %>
 </table>
 
-<% if current_user.role == "admin" %>
-	<%= link_to "Create a new schedule", new_schedule_path %>
-<% end %>
+<%= link_to "Create a new schedule", new_schedule_path if current_user.role == 'admin' %>
