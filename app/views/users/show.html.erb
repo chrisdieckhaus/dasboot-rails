@@ -11,7 +11,33 @@
 		<th></th>
 	</tr>
 	<% @user.shifts.sort_by{|s| s.start_time }.each do |shift| %>
-		<%= render "/schedules/shift_table", shift: shift %>
+		<tr class="<%= 'night-shift' if shift.night_shift? %>">
+			<td>
+				<% if shift.night_shift? %>
+					<% if shift.weekend_night? %>
+						<%= shift.start_time.yesterday.strftime('%A night (%-m/%-d)') %>*
+					<% else %>
+						<%= shift.start_time.strftime('%A night (%-m/%-d)') %>
+					<% end %>
+				<% else %>
+					<%= shift.start_time.strftime('%A %-m/%-d') %>
+				<% end %>
+			</td>
+			<td>
+				<%= shift.start_time.strftime('%l:%M%P') %>
+			</td>
+			<td>
+				<%= shift.end_time.strftime('%l:%M%P') %>
+			</td>
+		<% if current_user.role == "admin" %>
+			<td>
+				<%= link_to "Edit", edit_shift_path(shift) %>
+			</td>
+			<td>
+				<%= button_to 'x', shift_path(shift), method: :delete %>
+			</td>
+		<% end %>
+		</tr>
 	<% end %>
 </table>
 
@@ -28,7 +54,7 @@ These are the times <%= @user.first_name %> is <strong>not</strong> available.
 		<th></th>
 		<th></th>
 	</tr>
-	<% @user.availabilities.sort_by{|a| [a.day_date, a.times] }.each do |av| %>
+	<% @user.availabilities.sort_by{|a| a.start_time }.each do |av| %>
 		<%= render "/availabilities/av_table", av: av %>
 	<% end %>
 </table>
