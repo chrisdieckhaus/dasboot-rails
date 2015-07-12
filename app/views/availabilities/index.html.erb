@@ -12,29 +12,27 @@ These are the times people are <strong>not</strong> available.
 		<th></th>
 		<th></th>
 	</tr>
-<% @avs.sort_by{|a| [a.day_date, a.times] }.each do |av| %>
+<% @avs.sort_by{|a| a.start_time }.each do |av| %>
 	<% u = User.find(av.user_id) %>
 	<tr>
 		<td>
-			<%= link_to u.first_name, user_path(av.user_id) %>
+			<%= link_to u.first_name, user_path(u) %>
 		</td>
 		<td>
-			<%= av.day_date.strftime('%A %-m/%-d') %>
+			<%= av.start_time.strftime('%A %-m/%-d') %>
 		</td>
 		<td>
-			<%= av.times %>
+			<%= av.start_time.strftime('%l:%M%P') %> - <%= av.end_time.strftime('%l:%M%P') %>
 		</td>
 		<td>
-			<%= link_to 'Edit', edit_availability_path(av) if u == current_user || current_user.role == 'admin' %>
+			<%= link_to 'Edit', edit_availability_path(av) if current_user.role == 'admin' || current_user == u %>
 		</td>
 		<td>
-			<%= button_to 'x', availability_path(av), method: :delete if u == current_user || current_user.role == 'admin' %>
+			<%= button_to 'x', availability_path(av), method: :delete if current_user.role == 'admin' || current_user == u %>
 		</td>
 	</tr>
 <% end %>
 </table>
-
-<%= link_to 'Add new availability', new_availability_path %>
 
 
 
