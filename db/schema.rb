@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712182432) do
+ActiveRecord::Schema.define(version: 20150712185655) do
 
   create_table "availabilities", force: :cascade do |t|
     t.date     "day_date"
