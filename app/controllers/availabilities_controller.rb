@@ -9,13 +9,12 @@ class AvailabilitiesController < ApplicationController
 
 	def create 
 	  @av = Availability.new(av_params) 
-	  puts @av
 	  @av.user_id = current_user.id
-	  puts params
 	  avail = params[:availability]
-	  date = Date.new avail["day_date(1i)"].to_i, avail["day_date(2i)"].to_i, avail["day_date(3i)"].to_i
-	  @av.day_date = date
-	  @av.times = avail[:times]
+	  start_time = DateTime.new avail["start_time(1i)"].to_i, avail["start_time(2i)"].to_i, avail["start_time(3i)"].to_i, avail["start_time(4i)"].to_i, avail["start_time(5i)"].to_i
+		end_time = DateTime.new avail["end_time(1i)"].to_i, avail["end_time(2i)"].to_i, avail["end_time(3i)"].to_i, avail["end_time(4i)"].to_i, avail["end_time(5i)"].to_i
+	  @av.start_time = start_time
+	  @av.end_time = end_time
 	  @av.save
 	  if @av.save 
 	    redirect_to '/profile'
@@ -32,12 +31,13 @@ class AvailabilitiesController < ApplicationController
 	def update
 		@av = Availability.find(params[:id])
 		avail = params[:availability]
-		date = Date.new avail["day_date(1i)"].to_i, avail["day_date(2i)"].to_i, avail["day_date(3i)"].to_i
-		@av.day_date = date
-		@av.times = avail[:times]
+		start_time = DateTime.new avail["start_time(1i)"].to_i, avail["start_time(2i)"].to_i, avail["start_time(3i)"].to_i, avail["start_time(4i)"].to_i, avail["start_time(5i)"].to_i
+		end_time = DateTime.new avail["end_time(1i)"].to_i, avail["end_time(2i)"].to_i, avail["end_time(3i)"].to_i, avail["end_time(4i)"].to_i, avail["end_time(5i)"].to_i
+	  @av.start_time = start_time
+	  @av.end_time = end_time
 		@av.save
 		if @av.save
-			redirect_to availabilities_path
+			redirect_to '/profile'
 		else
 			render '/availabilities/edit/#{params[:id]}'
 		end
@@ -59,6 +59,6 @@ class AvailabilitiesController < ApplicationController
 
 	private
   	def av_params
-    	params.permit(:day_date, :times)
+    	params.permit(:day_date, :start_time, :end_time)
   	end
 end
