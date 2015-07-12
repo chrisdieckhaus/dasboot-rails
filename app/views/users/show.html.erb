@@ -12,23 +12,7 @@
 	</tr>
 	<% @user.shifts.sort_by{|s| s.start_time }.each do |shift| %>
 		<tr class="<%= 'night-shift' if shift.night_shift? %>">
-			<td>
-				<% if shift.night_shift? %>
-					<% if shift.weekend_night? %>
-						<%= shift.start_time.yesterday.strftime('%A night (%-m/%-d)') %>*
-					<% else %>
-						<%= shift.start_time.strftime('%A night (%-m/%-d)') %>
-					<% end %>
-				<% else %>
-					<%= shift.start_time.strftime('%A %-m/%-d') %>
-				<% end %>
-			</td>
-			<td>
-				<%= shift.start_time.strftime('%l:%M%P') %>
-			</td>
-			<td>
-				<%= shift.end_time.strftime('%l:%M%P') %>
-			</td>
+			<%= render 'schedules/shift_table', shift: shift %>
 		<% if current_user.role == "admin" %>
 			<td>
 				<%= link_to "Edit", edit_shift_path(shift) %>

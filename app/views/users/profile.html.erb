@@ -11,7 +11,17 @@
 		<th></th>
 	</tr>
 	<% @user.shifts.sort_by{|s| s.start_time }.each do |shift| %>
-		<%= render "/schedules/shift_table", shift: shift %>
+		<tr class="<%= 'night-shift' if shift.night_shift? %>">
+			<%= render 'schedules/shift_table', shift: shift %>
+		<% if current_user.role == "admin" %>
+			<td>
+				<%= link_to "Edit", edit_shift_path(shift) %>
+			</td>
+			<td>
+				<%= button_to 'x', shift_path(shift), method: :delete %>
+			</td>
+		<% end %>
+		</tr>
 	<% end %>
 </table>
 
