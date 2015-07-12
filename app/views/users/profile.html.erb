@@ -11,7 +11,17 @@
 		<th></th>
 	</tr>
 	<% @user.shifts.sort_by{|s| s.start_time }.each do |shift| %>
-		<%= render "/schedules/shift_table", shift: shift %>
+		<tr class="<%= 'night-shift' if shift.night_shift? %>">
+			<%= render 'schedules/shift_table', shift: shift %>
+		<% if current_user.role == "admin" %>
+			<td>
+				<%= link_to "Edit", edit_shift_path(shift) %>
+			</td>
+			<td>
+				<%= button_to 'x', shift_path(shift), method: :delete %>
+			</td>
+		<% end %>
+		</tr>
 	<% end %>
 </table>
 
@@ -28,7 +38,7 @@ These are the times I'm <strong>not</strong> available.
 		<th></th>
 		<th></th>
 	</tr>
-	<% @user.availabilities.sort_by{|a| [a.day_date, a.times] }.each do |av| %>
+	<% @user.availabilities.sort_by{|a| a.start_time }.each do |av| %>
 		<%= render "/availabilities/av_table", av: av %>
 	<% end %>
 </table>
