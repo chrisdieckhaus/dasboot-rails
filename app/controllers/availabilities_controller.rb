@@ -37,7 +37,7 @@ class AvailabilitiesController < ApplicationController
 	  @av.end_time = end_time
 		@av.save
 		if @av.save
-			redirect_to availabilities_path
+			redirect_to '/profile'
 		else
 			render '/availabilities/edit/#{params[:id]}'
 		end
