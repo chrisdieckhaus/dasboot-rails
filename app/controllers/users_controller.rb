@@ -2,8 +2,10 @@ class UsersController < ApplicationController
 	before_action :require_user, only: [:index, :show]
 
 	def index
-    @users = User.all
-  end
+    	@users = User.all
+    	@current_shifts = Shift.where("end_time > ? AND start_time < ?", Time.now-(60*60*4), Time.now-(60*60*4))
+    	@next_shifts = Shift.where("end_time > ? AND start_time < ?", Time.now-(60*60*3), Time.now-(60*60*3))
+  	end
 
 	def new
 		@user = User.new
@@ -38,6 +40,9 @@ class UsersController < ApplicationController
 
 	def profile
 		@user = current_user
+	end
+
+	def inkville
 	end
 
 	private

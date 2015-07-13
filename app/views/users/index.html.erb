@@ -2,6 +2,38 @@
 
 <h1>Welcome to Das Boot.</h1>
 
-<% @users.each do |u| %>
-	<li><%= u.first_name %> <%= u.last_name %></li>
+<h3>Currently in Kville:</h3>
+
+<% if @current_shifts %>
+	<ul>
+		<% @current_shifts.each do |shift| %>
+			<li>
+				<% u = User.find(shift.user_id) %>
+				<strong>
+					<%= link_to u.first_name+" "+u.last_name, user_path(u) %>:</strong>
+				<% times =  shift.start_time.strftime("%l:%M%P")+"-"+shift.end_time.strftime("%l:%M%P") %>
+				<%= link_to times, schedule_path(shift.schedule_id) %>
+			</li>
+		<% end %>
+	</ul>
+<% else %>
+	Nobody.
+<% end %>
+
+<h3>Up next:</h3>
+
+<% if @next_shifts %>
+	<ul>
+		<% @next_shifts.each do |shift| %>
+			<li>
+				<% u = User.find(shift.user_id) %>
+				<strong>
+					<%= link_to u.first_name+" "+u.last_name, user_path(u) %>:</strong>
+				<% times =  shift.start_time.strftime("%l:%M%P")+"-"+shift.end_time.strftime("%l:%M%P") %>
+				<%= link_to times, schedule_path(shift.schedule_id) %>
+			</li>
+		<% end %>
+	</ul>
+<% else %>
+	Nobody.
 <% end %>
