@@ -9,10 +9,10 @@
 	<%= f.collection_select(:user_id, User.all, :id, :first_name, :prompt => true, :required=> true) %>
 	<br>
 	<%= f.label :start_time %>
-	<%= f.datetime_select :start_time, :discard_year => true , :ampm => true %>
+	<%= f.datetime_select :start_time, :discard_year => true , :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
 	<br>
 	<%= f.label :end_time %>
-	<%= f.datetime_select :end_time, :discard_year => true, :ampm => true %>
+	<%= f.datetime_select :end_time, :discard_year => true, :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
 	<br>
 	<%= f.label :night_shift %>
 	<%= f.check_box :night_shift %>

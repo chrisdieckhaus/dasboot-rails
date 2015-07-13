@@ -3,7 +3,11 @@
 <h1>Edit availability</h1>
 
 <%= form_for(@av) do |f| %>
-  <%= f.date_select :day_date, :min => Date.today %>
-  <%= f.text_field :times, :placeholder => "When are you busy?" %>
+  <%= f.label :start_time %>
+  <%= f.datetime_select :start_time, :discard_year => true , :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
+  <br>
+  <%= f.label :end_time %>
+  <%= f.datetime_select :end_time, :discard_year => true , :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
+  <br>
   <%= f.submit "Save availability", class: "btn-submit" %>
 <% end %>

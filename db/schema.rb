@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710202733) do
+ActiveRecord::Schema.define(version: 20150712185655) do
 
   create_table "availabilities", force: :cascade do |t|
     t.date     "day_date"
@@ -19,17 +19,18 @@ ActiveRecord::Schema.define(version: 20150710202733) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   add_index "availabilities", ["user_id"], name: "index_availabilities_on_user_id"
 
   create_table "days", force: :cascade do |t|
     t.integer  "availability_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "day_name"
     t.date     "day_date"
     t.text     "times"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "days", ["availability_id"], name: "index_days_on_availability_id"
