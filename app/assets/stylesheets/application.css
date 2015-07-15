@@ -62,6 +62,17 @@ div.space-large{
   height: 100px;
 }
 
+.btn-raised{
+  border-radius: 2px;
+  
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+input.form-control{
+  border-radius: 2px;
+}
+
 .card{
   background: #fdfdfd;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
