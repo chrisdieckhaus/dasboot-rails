@@ -10,6 +10,7 @@
 		<th>Start Time</th>
 		<th>End Time</th>
 		<th>Member</th>
+		<th>Sub Requested?<th>
 		<% if current_user.role == "admin" %>
 			<th></th>
 			<th></th>
@@ -22,9 +23,16 @@
 			<td>
 				<%= link_to u.first_name, user_path(u) %>
 			</td>
+			<td>
+				<% if shift.has_sub_req? %>
+					<%= link_to "Accept Sub Request", :controller => "shifts", :action => "accept_sub", :params => {"shift_id" => shift, "schedule_id" => @schedule} %>
+				<% else %>
+					<%= link_to "Request Sub", :controller => "shifts", :action => "request_sub", :params => {"shift_id" => shift, "schedule_id" => @schedule} if u == current_user%>
+				<% end %>
+			</td>
 		<% if current_user.role == "admin" %>
 			<td>
-				<%= link_to "Edit", edit_shift_path(shift) %>
+				<%= link_to "Edit", edit_shift_path(shift) %> &nbsp;
 			</td>
 			<td>
 				<%= button_to 'x', shift_path(shift), method: :delete %>

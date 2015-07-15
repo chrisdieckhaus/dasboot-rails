@@ -44,4 +44,19 @@
 		<% end %>
 	</div>
 
+	<hr>
+
+	<div class="content-bar">
+		<% if @shifts_with_sub_req.count > 0 %>
+			<h4>Sub requests:</h4>
+			<ul class="list-group">
+				<% @shifts_with_sub_req.each do |shift| %>
+					<li class="list-group-item">
+						<% times =  shift.start_time.strftime("%A %-m/%-d %l:%M%P")+"-"+shift.end_time.strftime("%l:%M%P") %>
+						<%= link_to times, schedule_path(shift.schedule_id) %>
+					</li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
 </div>

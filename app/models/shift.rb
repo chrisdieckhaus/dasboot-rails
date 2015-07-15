@@ -10,4 +10,8 @@ class Shift < ActiveRecord::Base
 	def weekend_night?
 		self.night_shift? && (self.start_time.strftime("%H%M") == "0230") 
 	end
+
+	def has_sub_req?
+		self.sub_request == '1'
+	end
 end
