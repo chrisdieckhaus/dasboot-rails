@@ -5,3 +5,13 @@
 .sessions-photo {
     background: transparent asset-url("cameron3.jpg") no-repeat center center / cover;
 }
+
+body{
+  background: url('cameron.jpg') no-repeat fixed center center / cover;
+  background-repeat:no-repeat;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-position:center;
+}
