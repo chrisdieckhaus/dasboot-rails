@@ -65,7 +65,7 @@
 				<div class="col-lg-5 col-sm-12">		
 					<%= av.start_time.strftime('%l:%M%P') %> - <%= av.end_time.strftime('%l:%M%P') %>
 				</div>
-				<% if current_user.role == 'admin' || current_user == u %>
+				<% if current_user.role == 'admin' || current_user == @user %>
 					<div class="col-lg-1 col-xs-2" style="text-align:center;">
 						<%= link_to edit_availability_path(av), title: "Edit Availability" do %>
 							<i class="fa fa-edit"></i>

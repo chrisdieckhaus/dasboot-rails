@@ -1,44 +1,84 @@
 <div class="space"></div>
 
-<h1><%= @user.first_name %> <%= @user.last_name %>'s Schedule</h1>
-
-<table class="table">
-    <tr>
-		<th>Date</th>
-		<th>Start Time</th>
-		<th>End Time</th>
-		<th></th>
-		<th></th>
-	</tr>
+<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 card">
+	<div class="title-bar">
+		<h1 class="small-caps"><%= @user.first_name %> <%= @user.last_name %>'s Schedule
+		</h1>
+	</div>
 	<% @user.shifts.sort_by{|s| s.start_time }.each do |shift| %>
-		<tr class="<%= 'night-shift' if shift.night_shift? %>">
-			<%= render 'schedules/shift_table', shift: shift %>
-		<% if current_user.role == "admin" %>
-			<td>
-				<%= link_to "Edit", edit_shift_path(shift) %>
-			</td>
-			<td>
-				<%= button_to 'x', shift_path(shift), method: :delete %>
-			</td>
-		<% end %>
-		</tr>
+		<% u = User.find(shift.user_id) %>
+		<div class="content-bar list-group">
+			<div class="row pad row-highlighter">
+				<% lg_cols = current_user.role == 'admin' ? '5' : '6' %>
+				<div class="col-lg-<%= lg_cols%> col-sm-12">		
+					<% if shift.night_shift? %>
+						<% if shift.weekend_night? %>
+							<%= shift.start_time.yesterday.strftime('%A night (%-m/%-d)') %>*
+						<% else %>
+							<%= shift.start_time.strftime('%A night (%-m/%-d)') %>
+						<% end %>
+					<% else %>
+						<%= shift.start_time.strftime('%A %-m/%-d') %>
+					<% end %>
+				</div>
+				<div class="col-lg-<%= lg_cols%> col-sm-12">		
+					<%= shift.start_time.strftime('%l:%M%P') %> - <%= shift.end_time.strftime('%l:%M%P') %>
+				</div>
+				<% if current_user.role == 'admin' %>
+					<div class="col-lg-1 col-xs-2" style="text-align:center;">
+						<%= link_to edit_shift_path(shift), title: "Edit Shift" do %>
+							<i class="fa fa-edit"></i>
+						<% end %>
+					</div>
+					<div class="col-lg-1 col-xs-2" style="text-align:center;">
+						<%= button_to shift_path(shift), title: "Delete Shift", class: 'btn-delete-action', method: :delete do %>
+							<i class="fa fa-times"></i>
+						<% end %>	
+					</div>
+				<% end %>
+			</div>
+		</div>	
 	<% end %>
-</table>
+	<div class="title-bar list-group card-footer">
+		<p>
+			*Note: this is a night shift, so it actually starts the next day. For example Friday night (1/12) starting at 2:30am means although it's a Friday night shift, you'll actually be starting at 2:30am on Saturday 1/13.
+		</p>
+	</div>
+</div>
 
-<br>
-
-<h1><%= @user.first_name %> <%= @user.last_name %>'s Availability</h1>
-
-These are the times <%= @user.first_name %> is <strong>not</strong> available.
-
-<table class="table">
-    <tr>
-		<th>Date</th>
-		<th>Times</th>
-		<th></th>
-		<th></th>
-	</tr>
+<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 card">
+	<div class="title-bar">
+		<h1 class="small-caps"><%= @user.first_name %> <%= @user.last_name %>'s Availability
+		</h1>
+	</div>
 	<% @user.availabilities.sort_by{|a| a.start_time }.each do |av| %>
-		<%= render "/availabilities/av_table", av: av %>
+		<div class="content-bar list-group">
+			<div class="row pad row-highlighter">
+				<% lg_cols = (current_user.role == 'admin' || current_user == @user) ? '5' : '6' %>
+				<div class="col-lg-<%= lg_cols%> col-sm-12">		
+					<%= av.start_time.strftime('%A %-m/%-d') %>
+				</div>
+				<div class="col-lg-<%= lg_cols%> col-sm-12">		
+					<%= av.start_time.strftime('%l:%M%P') %> - <%= av.end_time.strftime('%l:%M%P') %>
+				</div>
+				<% if (current_user.role == 'admin') || (current_user == @user) %>
+					<div class="col-lg-1 col-xs-2" style="text-align:center;">
+						<%= link_to edit_availability_path(av), title: "Edit Availability" do %>
+							<i class="fa fa-edit"></i>
+						<% end %>
+					</div>
+					<div class="col-lg-1 col-xs-2" style="text-align:center;">
+						<%= button_to availability_path(av), title: "Delete Availability", class: 'btn-delete-action', method: :delete do %>
+							<i class="fa fa-times"></i>
+						<% end %>	
+					</div>
+				<% end %>
+			</div>
+		</div>	
 	<% end %>
-</table>
+	<div class="title-bar list-group card-footer">
+		<p>
+			*Note: These should be the times you are NOT available.
+		</p>
+	</div>
+</div>
