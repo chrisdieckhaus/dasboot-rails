@@ -1,53 +1,5 @@
 <div class="space"></div>
 
-<h1><%= @schedule.schedule_name %></h1>
-
-<h3><%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %></h3>
-
-<table class="table">
-    <tr>
-    	<th>Day</th>
-		<th>Start Time</th>
-		<th>End Time</th>
-		<th>Member</th>
-		<th>Sub Requested?<th>
-		<% if current_user.role == "admin" %>
-			<th></th>
-			<th></th>
-		<% end %>
-	</tr>
-	<% @schedule.shifts.sort_by{|s| s.start_time }.each do |shift| %>
-		<% u = User.find(shift.user_id) %>
-		<tr class="<%= 'night-shift' if shift.night_shift? %> <%= 'my-shift' if u == current_user %>">
-			<%= render 'schedules/shift_table', shift: shift %>
-			<td>
-				<%= link_to u.first_name, user_path(u) %>
-			</td>
-			<td>
-				<% if shift.has_sub_req? %>
-					<%= link_to "Accept Sub Request", :controller => "shifts", :action => "accept_sub", :params => {"shift_id" => shift, "schedule_id" => @schedule} %>
-				<% else %>
-					<%= link_to "Request Sub", :controller => "shifts", :action => "request_sub", :params => {"shift_id" => shift, "schedule_id" => @schedule} if u == current_user%>
-				<% end %>
-			</td>
-		<% if current_user.role == "admin" %>
-			<td>
-				<%= link_to "Edit", edit_shift_path(shift) %> &nbsp;
-			</td>
-			<td>
-				<%= button_to 'x', shift_path(shift), method: :delete %>
-			</td>
-		<% end %>
-		</tr>
-	<% end %>
-</table>
-
-*Note: this is the night shift, so it actually starts the next day. For example Friday night (1/12) starting at 2:30am means although it's a Friday night shift, you'll actually be starting at 2:30am on Saturday 1/13.
-
-<br>
-
-<%= link_to "Add shift", schedule_shifts_new_path(@schedule) if current_user.role == 'admin' %>
-
 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 card">
 	<div class="title-bar">
 		<h1 class="small-caps"><%= @schedule.schedule_name %>
@@ -101,7 +53,7 @@
 	<% end %>
 	<div class="title-bar list-group card-footer">
 		<p>
-			*Note: this is the night shift, so it actually starts the next day. For example Friday night (1/12) starting at 2:30am means although it's a Friday night shift, you'll actually be starting at 2:30am on Saturday 1/13.
+			*Note: this is a night shift, so it actually starts the next day. For example Friday night (1/12) starting at 2:30am means although it's a Friday night shift, you'll actually be starting at 2:30am on Saturday 1/13.
 		</p>
 	</div>
 </div>
