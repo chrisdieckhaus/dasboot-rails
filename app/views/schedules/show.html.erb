@@ -47,3 +47,61 @@
 <br>
 
 <%= link_to "Add shift", schedule_shifts_new_path(@schedule) if current_user.role == 'admin' %>
+
+<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 card">
+	<div class="title-bar">
+		<h1 class="small-caps"><%= @schedule.schedule_name %>
+		<% if current_user.role == 'admin' %>
+			<span class="pull-right">
+				<%= link_to schedule_shifts_new_path(@schedule), title: "New Shift", class: 'btn-new-action' do %>
+					<i class="fa fa-plus"></i>
+				<% end %>
+			</span>
+		<% end %>
+		</h1>
+	</div>
+	<% @schedule.shifts.sort_by{|s| s.start_time }.each do |shift| %>
+		<% u = User.find(shift.user_id) %>
+		<div class="content-bar list-group">
+			<div class="row pad">
+				<% lg_cols = current_user.role == 'admin' ? '3' : '4' %>
+				<div class="col-lg-<%= lg_cols%> col-sm-12">		
+					<strong>
+						<%= link_to u.first_name, user_path(u) %>
+					</strong>
+				</div>
+				<div class="col-lg-4 col-sm-12">		
+					<% if shift.night_shift? %>
+						<% if shift.weekend_night? %>
+							<%= shift.start_time.yesterday.strftime('%A night (%-m/%-d)') %>*
+						<% else %>
+							<%= shift.start_time.strftime('%A night (%-m/%-d)') %>
+						<% end %>
+					<% else %>
+						<%= shift.start_time.strftime('%A %-m/%-d') %>
+					<% end %>
+				</div>
+				<div class="col-lg-<%= lg_cols%> col-sm-12">		
+					<%= shift.start_time.strftime('%l:%M%P') %> - <%= shift.end_time.strftime('%l:%M%P') %>
+				</div>
+				<% if current_user.role == 'admin' %>
+					<div class="col-lg-1 col-xs-2" style="text-align:center;">
+						<%= link_to edit_shift_path(shift), title: "Edit Shift" do %>
+							<i class="fa fa-edit"></i>
+						<% end %>
+					</div>
+					<div class="col-lg-1 col-xs-2" style="text-align:center;">
+						<%= button_to shift_path(shift), title: "Delete Shift", class: 'btn-delete-action', method: :delete do %>
+							<i class="fa fa-times"></i>
+						<% end %>	
+					</div>
+				<% end %>
+			</div>
+		</div>	
+	<% end %>
+	<div class="title-bar list-group card-footer">
+		<p>
+			*Note: this is the night shift, so it actually starts the next day. For example Friday night (1/12) starting at 2:30am means although it's a Friday night shift, you'll actually be starting at 2:30am on Saturday 1/13.
+		</p>
+	</div>
+</div>
