@@ -126,6 +126,13 @@ input.form-control{
 
 .pad{
   padding: 0 15px;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.row-highlighter:hover{
+  background: #dae6ff;
+  cursor: pointer;
 }
 
 .btn-pad{

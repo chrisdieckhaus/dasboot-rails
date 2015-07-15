@@ -1,38 +1,51 @@
 <div class="space"></div>
 
-<h1>All Availabilities</h1>
-
-These are the times people are <strong>not</strong> available.
-
-<table class="table">
-    <tr>
-    	<th>Member</th>
-		<th>Date</th>
-		<th>Times</th>
-		<th></th>
-		<th></th>
-	</tr>
-<% @avs.sort_by{|a| a.start_time }.each do |av| %>
-	<% u = User.find(av.user_id) %>
-	<tr>
-		<td>
-			<%= link_to u.first_name, user_path(u) %>
-		</td>
-		<td>
+<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 card">
+	<div class="title-bar">
+		<h1 class="small-caps">Availabilities
+		<span class="pull-right">
+			<%= link_to new_availability_path, title: "Add Availability", class: 'btn-new-action' do %>
+				<i class="fa fa-plus"></i>
+			<% end %>
+		</span>
+		</h1>
+	</div>
+	<% @avs.sort_by{|a| a.start_time }.each do |av| %>
+		<% u = User.find(av.user_id) %>
+	<div class="content-bar list-group">
+		<div class="row pad row-highlighter">
+			<div class="col-lg-3 col-sm-12">		
+			<strong>
+				<%= link_to u.first_name, user_path(u) %>
+			</strong>
+		</div>
+		<div class="col-lg-4 col-sm-12">		
 			<%= av.start_time.strftime('%A %-m/%-d') %>
-		</td>
-		<td>
+		</div>
+		<div class="col-lg-3 col-sm-12">		
 			<%= av.start_time.strftime('%l:%M%P') %> - <%= av.end_time.strftime('%l:%M%P') %>
-		</td>
-		<td>
-			<%= link_to 'Edit', edit_availability_path(av) if current_user.role == 'admin' || current_user == u %>
-		</td>
-		<td>
-			<%= button_to 'x', availability_path(av), method: :delete if current_user.role == 'admin' || current_user == u %>
-		</td>
-	</tr>
-<% end %>
-</table>
+		</div>
+		<% if current_user.role == 'admin' || current_user == u %>
+			<div class="col-lg-1 col-xs-2" style="text-align:center;">
+				<%= link_to edit_availability_path(av), title: "Edit Availability" do %>
+					<i class="fa fa-edit"></i>
+				<% end %>
+			</div>
+			<div class="col-lg-1 col-xs-2" style="text-align:center;">
+				<%= button_to availability_path(av), title: "Delete Availability", class: 'btn-delete-action', method: :delete do %>
+					<i class="fa fa-times"></i>
+				<% end %>	
+			</div>
+		<% end %>
+		</div>
+	</div>	
+	<% end %>
+	<div class="title-bar list-group card-footer">
+		<p>
+			*Note: These are all the times people are NOT available.
+		</p>
+	</div>
+</div>
 
 
 

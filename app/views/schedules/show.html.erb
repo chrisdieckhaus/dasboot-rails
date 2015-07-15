@@ -15,7 +15,7 @@
 	<% @schedule.shifts.sort_by{|s| s.start_time }.each do |shift| %>
 		<% u = User.find(shift.user_id) %>
 		<div class="content-bar list-group">
-			<div class="row pad">
+			<div class="row pad row-highlighter">
 				<% lg_cols = current_user.role == 'admin' ? '3' : '4' %>
 				<div class="col-lg-<%= lg_cols%> col-sm-12">		
 					<strong>
