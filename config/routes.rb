@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   
   resources :shifts 
 
+  get 'subreq' => 'shifts#request_sub'
+  get 'subaccept' => 'shifts#accept_sub'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

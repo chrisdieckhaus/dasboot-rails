@@ -37,3 +37,16 @@
 <% else %>
 	Nobody.
 <% end %>
+
+<h3>Sub requests:</h3>
+
+<% if @shifts_with_sub_req %>
+	<ul>
+		<% @shifts_with_sub_req.each do |shift| %>
+			<li>
+				<% times =  shift.start_time.strftime("%A %-m/%-d %l:%M%P")+"-"+shift.end_time.strftime("%l:%M%P") %>
+				<%= link_to times, schedule_path(shift.schedule_id) %>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
