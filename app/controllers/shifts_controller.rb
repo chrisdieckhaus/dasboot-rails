@@ -54,6 +54,23 @@ class ShiftsController < ApplicationController
     	redirect_to schedule_path(schedule_id)
   	end
 
+  	def request_sub
+  		@shift = Shift.find(params[:shift_id])
+  		@schedule = Schedule.find(params[:schedule_id])
+  		@shift.sub_request = '1'
+  		@shift.save
+  		redirect_to schedule_path(@schedule)
+  	end
+
+  	def accept_sub
+  		@shift = Shift.find(params[:shift_id])
+  		@schedule = Schedule.find(params[:schedule_id])
+  		@shift.sub_request = '0'
+  		@shift.user_id = current_user.id
+  		@shift.save
+  		redirect_to schedule_path(@schedule)
+  	end
+
 	private
   	def shift_params
     	params.permit(:date, :start_time, :end_time, :night_shift)
