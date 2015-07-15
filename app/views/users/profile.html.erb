@@ -18,7 +18,7 @@
 				<%= link_to "Edit", edit_shift_path(shift) %>
 			</td>
 			<td>
-				<%= button_to 'x', shift_path(shift), method: :delete %>
+				<%= button_to 'x', shift_path(shift), method: :delete, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--colored" %>
 			</td>
 		<% end %>
 		</tr>
