@@ -155,3 +155,18 @@ input.form-control{
   background: none;
   font-weight: bold;
 }
+
+.look, .look > a{
+  color: #CC4D2E;
+}
+
+.look > a:hover{
+  color: #CC4D2E;
+  text-decoration: underline;
+  
+}
+
+.emph {
+  font-weight: bold;
+  font-size: 12px;
+}
