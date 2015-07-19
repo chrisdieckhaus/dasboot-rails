@@ -56,7 +56,7 @@ class ShiftsController < ApplicationController
 
   	def request_sub
   		@shift = Shift.find(params[:shift_id])
-  		@schedule = Schedule.find(params[:schedule_id])
+  		@schedule = @shift.schedule_id
   		@shift.sub_request = '1'
   		@shift.save
   		redirect_to schedule_path(@schedule)
