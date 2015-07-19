@@ -40,7 +40,9 @@ body{
 div.photo-bar {
     z-index: 3;
     position: relative;
-    height: 600px;
+    height: 300px;
+    background: url('cameron.jpg') no-repeat bottom center fixed;
+    background-size: cover;
 }
 
 h1, h2, h3{
@@ -57,6 +59,10 @@ h4, p{
 
 div.space{
 	height: 50px;
+}
+
+div.space-small{
+  height: 25px;
 }
 
 div.space-large{
