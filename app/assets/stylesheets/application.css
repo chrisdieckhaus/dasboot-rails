@@ -125,7 +125,7 @@ input.form-control{
 .small-caps{
   font-family: Montserrat;
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 18px;
   letter-spacing: 2px;
   margin-top: 10px;
 }
@@ -172,10 +172,6 @@ input.form-control{
   text-decoration: underline;
   
 }
-
-
-
-
 
 @media only screen and (max-width: 400px) {
 
