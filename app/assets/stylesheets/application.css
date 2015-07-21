@@ -47,13 +47,11 @@ div.photo-bar {
 }
 
 h1, h2, h3{
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color: #223469;
   padding: 0 15px;
 }
 
 h4, p{
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 0 15px;
   color: #313131;
 }
