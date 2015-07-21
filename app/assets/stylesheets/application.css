@@ -34,7 +34,7 @@
 }
 
 body{
-  background: #f5f5f5;
+  background: #f9f9f9;
 }
 
 div.photo-bar {
@@ -130,14 +130,15 @@ input.form-control{
   margin-top: 10px;
 }
 
+.emph {
+  font-weight: bold;
+  font-size: 12px;
+}
+
 .pad{
   padding: 0 15px;
   margin-left: -5px;
   margin-right: -5px;
-}
-
-.row-highlighter:hover{
-  background: #dae6ff;
 }
 
 .btn-pad{
@@ -172,7 +173,14 @@ input.form-control{
   
 }
 
-.emph {
-  font-weight: bold;
-  font-size: 12px;
+
+
+
+
+@media only screen and (max-width: 400px) {
+
+   .small-caps { font-size: 18px; }
+   .card > .content-bar, .card > .title-bar { text-align: center; }
+   .no-center > .content-bar { text-align: left; }
+   .emph { font-size: 14px; }
 }
