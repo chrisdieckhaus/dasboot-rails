@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+	before_action :require_user, only: [:index, :show, :new, :edit]
+
 	def index
 		@schedules = Schedule.all
 	end

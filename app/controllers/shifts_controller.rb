@@ -1,4 +1,6 @@
 class ShiftsController < ApplicationController
+	before_action :require_user, only: [:new, :show, :edit]
+
 	def new
 		@users = User.all 
 		@schedule = Schedule.find(params[:schedule_id])

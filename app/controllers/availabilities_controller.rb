@@ -1,4 +1,5 @@
 class AvailabilitiesController < ApplicationController
+	before_action :require_user, only: [:index, :show, :mine, :new, :edit]
 	def index
 		@avs = Availability.all
 	end
