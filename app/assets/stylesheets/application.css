@@ -40,7 +40,9 @@ body{
 div.photo-bar {
     z-index: 3;
     position: relative;
-    height: 600px;
+    height: 300px;
+    background: url('cameron.jpg') no-repeat bottom center fixed;
+    background-size: cover;
 }
 
 h1, h2, h3{
@@ -57,6 +59,10 @@ h4, p{
 
 div.space{
 	height: 50px;
+}
+
+div.space-small{
+  height: 25px;
 }
 
 div.space-large{
@@ -126,6 +132,12 @@ input.form-control{
 
 .pad{
   padding: 0 15px;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.row-highlighter:hover{
+  background: #dae6ff;
 }
 
 .btn-pad{
@@ -148,4 +160,19 @@ input.form-control{
   border: none;
   background: none;
   font-weight: bold;
+}
+
+.look, .look > a{
+  color: #CC4D2E;
+}
+
+.look > a:hover{
+  color: #CC4D2E;
+  text-decoration: underline;
+  
+}
+
+.emph {
+  font-weight: bold;
+  font-size: 12px;
 }

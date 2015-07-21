@@ -1,6 +1,8 @@
 <div class="space"></div>
 
-<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 card">
+<% lg_card_cols = current_user.role == 'admin' ? '8' : '6' %>
+<% lg_card_offset = current_user.role == 'admin' ? '2' : '3' %>
+<div class="col-lg-<%= lg_card_cols %> col-lg-offset-<%= lg_card_offset %> col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 card">
 	<div class="title-bar">
 		<h1 class="small-caps"><%= @schedule.schedule_name %>
 		<% if current_user.role == 'admin' %>
@@ -15,14 +17,14 @@
 	<% @schedule.shifts.sort_by{|s| s.start_time }.each do |shift| %>
 		<% u = User.find(shift.user_id) %>
 		<div class="content-bar list-group">
-			<div class="row pad">
+			<div class="row pad row-highlighter">
 				<% lg_cols = current_user.role == 'admin' ? '3' : '4' %>
-				<div class="col-lg-<%= lg_cols%> col-sm-12">		
+				<div class="col-lg-2 col-sm-12">		
 					<strong>
 						<%= link_to u.first_name, user_path(u) %>
 					</strong>
 				</div>
-				<div class="col-lg-4 col-sm-12">		
+				<div class="col-lg-<%= lg_cols %> col-sm-12">		
 					<% if shift.night_shift? %>
 						<% if shift.weekend_night? %>
 							<%= shift.start_time.yesterday.strftime('%A night (%-m/%-d)') %>*
@@ -33,8 +35,27 @@
 						<%= shift.start_time.strftime('%A %-m/%-d') %>
 					<% end %>
 				</div>
-				<div class="col-lg-<%= lg_cols%> col-sm-12">		
-					<%= shift.start_time.strftime('%l:%M%P') %> - <%= shift.end_time.strftime('%l:%M%P') %>
+				<div class="col-lg-3 col-sm-12">		
+					<%= shift.start_time.strftime('%l:%M%P') %>-<%= shift.end_time.strftime('%l:%M%P') %>
+				</div>
+				<% lg_cols_name = current_user.role == 'admin' ? '2' : '3' %>
+				<div class="col-lg-<%= lg_cols_name %> col-md-4 col-xs-8">
+					<% if shift.has_sub_req? %>
+						<span class="look emph">
+							<i class="fa fa-exclamation-circle look" title="Accept Sub"></i>
+							<%= link_to :controller => "shifts", :action => "accept_sub", :params => {"shift_id" => shift, "schedule_id" => @schedule} do %>
+								Accept sub
+							<% end %>
+						</span>
+					<% else %>
+						<% if u == current_user %>
+							<%= link_to :controller => "shifts", :action => "request_sub", :params => {"shift_id" => shift, "schedule_id" => @schedule} do %>
+								<span class="emph">
+									Request sub
+								</span>
+							<% end %>
+						<% end %>
+					<% end %>
 				</div>
 				<% if current_user.role == 'admin' %>
 					<div class="col-lg-1 col-xs-2" style="text-align:center;">
