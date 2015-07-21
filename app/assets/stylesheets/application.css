@@ -35,6 +35,7 @@
 
 body{
   background: #f9f9f9;
+  font-family: 'Open Sans', sans-serif;
 }
 
 div.photo-bar {
@@ -132,7 +133,7 @@ input.form-control{
 
 .emph {
   font-weight: bold;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .pad{
