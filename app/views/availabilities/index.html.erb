@@ -26,12 +26,12 @@
 			<%= av.start_time.strftime('%l:%M%P') %> - <%= av.end_time.strftime('%l:%M%P') %>
 		</div>
 		<% if current_user.role == 'admin' || current_user == u %>
-			<div class="col-lg-1 col-xs-2" style="text-align:center;">
+			<div class="col-lg-1 col-sm-offset-0 col-xs-1 col-xs-offset-4" style="text-align:center;">
 				<%= link_to edit_availability_path(av), title: "Edit Availability" do %>
 					<i class="fa fa-edit"></i>
 				<% end %>
 			</div>
-			<div class="col-lg-1 col-xs-2" style="text-align:center;">
+			<div class="col-lg-1 col-xs-1" style="text-align:center;">
 				<%= button_to availability_path(av), title: "Delete Availability", class: 'btn-delete-action', method: :delete do %>
 					<i class="fa fa-times"></i>
 				<% end %>	
