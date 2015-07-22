@@ -9,10 +9,19 @@ class ShiftsController < ApplicationController
 
 	def create
 		shift_p = params[:shift]
+		puts shift_p
+		yyyy_s = shift_p["start_time"].split("/")[2]
+		dd_s =  shift_p["start_time"].split("/")[1]
+		mm_s = shift_p["start_time"].split("/")[0]
+		yyyy_e = shift_p["end_time"].split("/")[2]
+		dd_e =  shift_p["end_time"].split("/")[1]
+		mm_e = shift_p["end_time"].split("/")[0]
 		@shift = Shift.new(shift_params) 
-		date = Date.new shift_p["start_time(1i)"].to_i, shift_p["start_time(2i)"].to_i, shift_p["start_time(3i)"].to_i
-		start_time = DateTime.new shift_p["start_time(1i)"].to_i, shift_p["start_time(2i)"].to_i, shift_p["start_time(3i)"].to_i, shift_p["start_time(4i)"].to_i, shift_p["start_time(5i)"].to_i
-		end_time = DateTime.new shift_p["end_time(1i)"].to_i, shift_p["end_time(2i)"].to_i, shift_p["end_time(3i)"].to_i, shift_p["end_time(4i)"].to_i, shift_p["end_time(5i)"].to_i
+		date = Date.new yyyy_s.to_i, mm_s.to_i, dd_s.to_i
+		start_time = DateTime.new yyyy_s.to_i, mm_s.to_i, dd_s.to_i, shift_p["start_time(4i)"].to_i, shift_p["start_time(5i)"].to_i
+		end_time = DateTime.new yyyy_e.to_i, mm_e.to_i, dd_e.to_i, shift_p["end_time(4i)"].to_i, shift_p["end_time(5i)"].to_i
+		puts start_time
+		puts end_time
 		good_times = end_time >= start_time
 		@shift.start_time = start_time
 		@shift.end_time = end_time

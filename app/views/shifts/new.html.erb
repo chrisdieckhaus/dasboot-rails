@@ -9,14 +9,39 @@
 
 		<%= bootstrap_form_for(@shift) do |f| %>
 			<%= f.hidden_field :schedule_id, :value => @schedule.id %>
-			<%= f.collection_select(:user_id, User.all, :id, :first_name, :prompt => true, :required=> true) %>
+			<div class="row pad">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.collection_select(:user_id, User.all, :id, :first_name, :prompt => true, :required=> true) %>
+				</div>
+			</div>
+			<div class="row pad">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.text_field :start_time, as: :datepicker, label: 'Start date', id: 'from', required: true %>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.text_field :end_time, as: :datepicker, label: 'End date', id: 'to', required: true %>
+				</div>
+			</div>
+			<div class="row pad">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.datetime_select :start_time, :discard_year => true, :discard_month => true, :ampm => true, :default => { :minute => 00 }, :minute_step => 15, inline: true %>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.datetime_select :end_time, :discard_year => true, :discard_month => true, :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
+				</div>
+			</div>
+
+			<div class="row pad">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.check_box :night_shift %>
+				</div>
+			</div>
 			<br>
-			<%= f.datetime_select :start_time, :discard_year => true , :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
-			<%= f.datetime_select :end_time, :discard_year => true, :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
-			<br>
-			<%= f.check_box :night_shift %>
-			<br>
-			<%= f.submit "Create shift", class: "btn btn-primary btn-raised" %>
+			<div class="row pad">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.submit "Create shift", class: "btn btn-primary btn-raised" %>
+				</div>
+			</div>
 		<% end %>
 	</div>	
 </div>
