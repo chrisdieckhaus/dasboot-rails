@@ -1,3 +1,29 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+$(document).ready(function() {
+  $(function() {
+    $( "#from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+});
+</script>
+
 <div class="space"></div>
 
 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 card no-center">
@@ -6,11 +32,28 @@
 	</div>
 	<div class="content-bar list-group">
 		<%= bootstrap_form_for(@av) do |f| %>
-			<%= f.datetime_select :start_time, :discard_year => true , :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
+			<div class="row pad">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.text_field :start_time, as: :datepicker, label: 'Start date', id: 'from', required: true %>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.text_field :end_time, as: :datepicker, label: 'End date', id: 'to', required: true %>
+				</div>
+			</div>
+			<div class="row pad">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.datetime_select :start_time, :discard_year => true, :discard_month => true, :ampm => true, :default => { :minute => 00 }, :minute_step => 15, inline: true %>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.datetime_select :end_time, :discard_year => true, :discard_month => true, :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
+				</div>
+			</div>
 			<br>
-			<%= f.datetime_select :end_time, :discard_year => true , :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
-			<br>
-			<%= f.submit "Add availability", class: "btn btn-primary btn-raised" %>
+			<div class="row pad">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<%= f.submit "Add availability", class: "btn btn-primary btn-raised" %>
+				</div>
+			</div>
 		<% end %>
 	</div>	
 </div>

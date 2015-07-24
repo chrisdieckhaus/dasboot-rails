@@ -9,19 +9,28 @@ class AvailabilitiesController < ApplicationController
 	end
 
 	def create 
-	  @av = Availability.new(av_params) 
-	  @av.user_id = current_user.id
-	  avail = params[:availability]
-	  start_time = DateTime.new avail["start_time(1i)"].to_i, avail["start_time(2i)"].to_i, avail["start_time(3i)"].to_i, avail["start_time(4i)"].to_i, avail["start_time(5i)"].to_i
-		end_time = DateTime.new avail["end_time(1i)"].to_i, avail["end_time(2i)"].to_i, avail["end_time(3i)"].to_i, avail["end_time(4i)"].to_i, avail["end_time(5i)"].to_i
-	  @av.start_time = start_time
-	  @av.end_time = end_time
-	  @av.save
-	  if @av.save 
-	    redirect_to '/profile'
-	  else 
-	    redirect_to new_availability_path 
-	  end 
+	  	@av = Availability.new(av_params) 
+	  	@av.user_id = current_user.id
+	  	avail = params[:availability]
+	  	yyyy_s = avail["start_time"].split("/")[2]
+		dd_s =  avail["start_time"].split("/")[1]
+		mm_s = avail["start_time"].split("/")[0]
+		yyyy_e = avail["end_time"].split("/")[2]
+		dd_e =  avail["end_time"].split("/")[1]
+		mm_e = avail["end_time"].split("/")[0]
+		date = Date.new yyyy_s.to_i, mm_s.to_i, dd_s.to_i
+		start_time = DateTime.new yyyy_s.to_i, mm_s.to_i, dd_s.to_i, avail["start_time(4i)"].to_i, avail["start_time(5i)"].to_i
+		end_time = DateTime.new yyyy_e.to_i, mm_e.to_i, dd_e.to_i, avail["end_time(4i)"].to_i, avail["end_time(5i)"].to_i
+		puts start_time
+		puts end_time
+		@av.start_time = start_time
+		@av.end_time = end_time
+		@av.save
+		if @av.save 
+		    redirect_to '/profile'
+		else 
+		    redirect_to new_availability_path 
+		end 
 	end
 
 	def edit
