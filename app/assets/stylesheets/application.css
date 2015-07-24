@@ -70,9 +70,8 @@ div.space-large{
 
 .btn-raised{
   border-radius: 2px;
-  
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold
 }
 
 input.form-control{
