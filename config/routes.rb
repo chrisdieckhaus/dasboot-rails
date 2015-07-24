@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'profile' => 'users#profile'
+  get 'about' => 'static#about'
   resources :users
 
   # You can have the root of your site routed with "root"
