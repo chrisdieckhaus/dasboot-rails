@@ -168,7 +168,10 @@ input.form-control{
 .look > a:hover{
   color: #CC4D2E;
   text-decoration: underline;
-  
+}
+
+.centered{
+  text-align: center;
 }
 
 @media only screen and (max-width: 400px) {
