@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body{
-  background: url('tent1.jpg') no-repeat fixed center center / cover;
+  background: url('tent3.jpg') no-repeat fixed center center / cover;
   background-repeat:no-repeat;
   -webkit-background-size:cover;
   -moz-background-size:cover;
@@ -14,4 +14,8 @@ body{
 
 .content-bar > p> a{
 	font-weight: bold;
+}
+
+.content-bar > p {
+	line-height: 150%;
 }
