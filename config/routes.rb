@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'profile' => 'users#profile'
   get 'about' => 'static#about'
   get 'contact' => 'static#contact'
+  get 'members' => 'static#members'
   resources :users
 
   # You can have the root of your site routed with "root"
