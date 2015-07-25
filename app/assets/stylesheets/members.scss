@@ -1,0 +1,26 @@
+body{
+  background: url('cameron10.jpg') no-repeat fixed center center / cover;
+  background-repeat:no-repeat;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-position:center;
+}
+
+h4{
+	color: #223469;
+	margin: 5px 0;
+}
+
+p{
+	margin: 0 0 5px 0;
+}
+
+.title-bar{
+	padding: 0;
+}
+
+img{
+	max-width: 100%;
+}

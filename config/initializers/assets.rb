@@ -8,6 +8,7 @@ Rails.application.config.assets.precompile += %w( header.css )
 Rails.application.config.assets.precompile += %w( sessions.css )
 Rails.application.config.assets.precompile += %w( static.css )
 Rails.application.config.assets.precompile += %w( contact.css )
+Rails.application.config.assets.precompile += %w( members.css )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
