@@ -63,6 +63,11 @@
 			<h1 class="small-caps">Sub requests</h1>
 		</div>
 		<div class="content-bar">
+			<% @shifts_with_sub_req = [] %>
+			<% @shifts.each do |shift| %>
+				<% @shifts_with_sub_req.push(shift) if shift.has_sub_req? %>
+			<% end %>
+
 			<% if @shifts_with_sub_req.count > 0 %>
 				<ul class="list-group">
 					<% @shifts_with_sub_req.each do |shift| %>

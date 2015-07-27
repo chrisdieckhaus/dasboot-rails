@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     	@users = User.all
     	@current_shifts = Shift.where("end_time > ? AND start_time < ?", Time.now-(60*60*4), Time.now-(60*60*4))
     	@next_shifts = Shift.where("end_time > ? AND start_time < ?", Time.now-(60*60*3), Time.now-(60*60*3))
-    	@shifts_with_sub_req = Shift.where('sub_request == "1"')
+    	@shifts = Shift.all
   	end
 
 	def new
