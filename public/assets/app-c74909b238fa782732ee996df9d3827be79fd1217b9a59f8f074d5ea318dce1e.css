@@ -5,6 +5,7 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -6585,3 +6586,375 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+/* line 1, /home/chris/Code/dasboot-rails/app/assets/stylesheets/contact.scss */
+body {
+  background: url("tent1.jpg") no-repeat fixed center center/cover;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+/* line 11, /home/chris/Code/dasboot-rails/app/assets/stylesheets/contact.scss */
+h4 {
+  color: #223469;
+}
+.navbar{
+    box-shadow:0 0 10px black;
+    background: #223469;
+}
+
+.navbar-default a, .navbar-default a:visited, .navbar-brand a, .navbar-default a:visited{
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #f5f5f5;
+    line-height: 1.5;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding-bottom: 5px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-brand > a{
+    line-height: 1.5;
+    color: #f5f5f5;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding-bottom: 5px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-brand > a:hover{
+    border-bottom: 2px solid #f5f5f5;
+    color: #f5f5f5;
+}
+
+a#uname:hover{
+    border-bottom: none;
+}
+
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{
+
+    color: #f5f5f5;
+    border-bottom: 2px solid #f5f5f5;
+}
+
+.navbar{
+    min-height: 75px;
+}
+
+button.navbar-toggle.collapsed{
+    margin-top: 20px;
+}
+
+
+/* line 1, /home/chris/Code/dasboot-rails/app/assets/stylesheets/members.scss */
+body {
+  background: url("cameron9.jpg") no-repeat fixed center center/cover;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+/* line 11, /home/chris/Code/dasboot-rails/app/assets/stylesheets/members.scss */
+h4 {
+  color: #223469;
+  margin: 5px 0;
+}
+
+/* line 16, /home/chris/Code/dasboot-rails/app/assets/stylesheets/members.scss */
+p {
+  margin: 0 0 5px 0;
+}
+
+/* line 20, /home/chris/Code/dasboot-rails/app/assets/stylesheets/members.scss */
+.title-bar {
+  padding: 0;
+}
+
+/* line 24, /home/chris/Code/dasboot-rails/app/assets/stylesheets/members.scss */
+img {
+  max-width: 100%;
+}
+/* line 5, /home/chris/Code/dasboot-rails/app/assets/stylesheets/schedules.scss */
+tr.my-shift {
+  font-weight: bold;
+}
+
+/* line 9, /home/chris/Code/dasboot-rails/app/assets/stylesheets/schedules.scss */
+tr.night-shift {
+  background: #ccc;
+}
+/* line 5, /home/chris/Code/dasboot-rails/app/assets/stylesheets/sessions.scss */
+body {
+  background: url("cameron.jpg") no-repeat fixed center center/cover;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+/* line 15, /home/chris/Code/dasboot-rails/app/assets/stylesheets/sessions.scss */
+.content-index > p {
+  line-height: 150%;
+  padding-bottom: 20px;
+}
+
+/* line 20, /home/chris/Code/dasboot-rails/app/assets/stylesheets/sessions.scss */
+.content-index > p > a {
+  color: #223469;
+  font-weight: bold;
+}
+
+/* line 25, /home/chris/Code/dasboot-rails/app/assets/stylesheets/sessions.scss */
+.content-index:last-child {
+  padding-bottom: 0px;
+}
+
+/* line 29, /home/chris/Code/dasboot-rails/app/assets/stylesheets/sessions.scss */
+strong {
+  color: #223469;
+}
+/* line 5, /home/chris/Code/dasboot-rails/app/assets/stylesheets/static.scss */
+body {
+  background: url("tent3.jpg") no-repeat fixed center center/cover;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+/* line 15, /home/chris/Code/dasboot-rails/app/assets/stylesheets/static.scss */
+.content-bar > p > a {
+  font-weight: bold;
+}
+
+/* line 19, /home/chris/Code/dasboot-rails/app/assets/stylesheets/static.scss */
+.content-about > p {
+  line-height: 170%;
+  padding-bottom: 20px;
+}
+
+/* line 24, /home/chris/Code/dasboot-rails/app/assets/stylesheets/static.scss */
+.content-about:last-child {
+  padding-bottom: 0;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+ */
+
+@charset "utf-8";
+
+
+
+@font-face {
+  font-family: "Montserrat";
+  src: url('Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: "Goudy-Italic";
+  src: url('OFLGoudyStMTT-Italic.ttf');
+}
+
+@font-face {
+  font-family: "Goudy";
+  src: url('OFLGoudyStMTT.ttf');
+}
+
+body{
+  background: #f9f9f9;
+  font-family: 'Open Sans', sans-serif;
+}
+
+div.photo-bar {
+    z-index: 3;
+    position: relative;
+    height: 300px;
+    background: url('cameron.jpg') no-repeat bottom center fixed;
+    background-size: cover;
+}
+
+.photo-bar-members{
+  
+}
+
+h1, h2, h3{
+	color: #223469;
+  padding: 0 15px;
+}
+
+h4, p{
+  padding: 0 15px;
+  color: #313131;
+}
+
+div.space{
+	height: 50px;
+}
+
+div.space-small{
+  height: 25px;
+}
+
+div.space-large{
+  height: 100px;
+}
+
+.btn-raised{
+  border-radius: 2px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold
+}
+
+input.form-control{
+  border-radius: 2px;
+}
+
+.card{
+  background: #fdfdfd;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.card-sm{
+  margin: 25px;
+}
+
+.title-bar{
+  background: #223469;
+  margin: 0 0 20px 0;
+  padding: 10px;
+}
+
+.title-bar > h1{
+  color: #f5f5f5;
+  padding: 0 15px;
+}
+
+.content-bar{
+  padding: 0 10px;
+}
+
+.content-bar-padded{
+  padding-bottom: 15px;
+}
+
+.card-footer{
+  font-style: italic;
+  font-size: 12px;
+  background: #dae6ff;
+  margin: 0;
+}
+
+.card-footer > p {
+  margin: 10px 0;
+}
+
+.list-group-item{
+  border: none;
+  background: #fdfdfd;
+}
+
+.small-caps{
+  font-family: Montserrat;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}
+
+.emph {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.pad{
+  padding: 0 15px;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.btn-pad{
+  margin-left: 15px;
+}
+
+.btn-new-action{
+  font-size: 20px;
+  color: #f5f5f5;
+}
+
+.btn-new-action:hover{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.btn-delete-action{
+  font-size: 14px;
+  color: #223469;
+  border: none;
+  background: none;
+  font-weight: bold;
+}
+
+.look, .look > a{
+  color: #CC4D2E;
+}
+
+.look > a:hover{
+  color: #CC4D2E;
+  text-decoration: underline;
+}
+
+.centered{
+  text-align: center;
+}
+
+@media only screen and (max-width: 400px) {
+
+   .small-caps { font-size: 18px; }
+   .card > .content-bar, .card > .title-bar { text-align: center; }
+   .no-center > .content-bar { text-align: left; }
+   .emph { font-size: 14px; }
+}
+.rails-bootstrap-forms-date-select select,
+.rails-bootstrap-forms-time-select select,
+.rails-bootstrap-forms-datetime-select select {
+  display: inline-block;
+  width: auto;
+}
+
+.rails-bootstrap-forms-error-summary {
+  margin-top: 10px;
+}
