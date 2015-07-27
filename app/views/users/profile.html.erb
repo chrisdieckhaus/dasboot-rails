@@ -115,9 +115,9 @@
 			<%= f.text_field :first_name %>
 			<%= f.text_field :last_name %>
 			<%= f.email_field :email %>
-			<% if current_user.role == 'admin' %>
+			
 				<%= f.text_field :role %>
-			<% end %>
+			
 			<%= f.submit "Update account", class: "btn btn-primary btn-raised" %>
 		<% end %>
 	</div>
