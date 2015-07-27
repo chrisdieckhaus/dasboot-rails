@@ -4,7 +4,7 @@
     background: #223469;
 }
 
-.navbar-default a, .navbar-default a:visited, .navbar-brand a{
+.navbar-default a, .navbar-default a:visited, .navbar-brand a, .navbar-default a:visited{
     font-family: Montserrat, sans-serif;
     font-size: 18px;
     letter-spacing: 2px;
