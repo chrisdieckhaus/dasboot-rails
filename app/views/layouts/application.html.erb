@@ -8,7 +8,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -26,9 +26,6 @@
     <li><%= link_to "Signup", 'signup' %></a></li> 
   </ul> 
 <% end %>
-
-
-
 
 <%= yield %>
 
