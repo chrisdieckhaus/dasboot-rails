@@ -16,6 +16,11 @@ body{
 	font-weight: bold;
 }
 
-.content-bar > p {
-	line-height: 150%;
+.content-about > p {
+	line-height: 170%;
+	padding-bottom: 20px;
+}
+
+.content-about:last-child {
+	padding-bottom: 0;
 }
