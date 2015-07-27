@@ -1,0 +1,32 @@
+/* line 5, /home/chris/Code/dasboot-rails/app/assets/stylesheets/sessions.scss */
+body {
+  background: url("cameron.jpg") no-repeat fixed center center/cover;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+/* line 15, /home/chris/Code/dasboot-rails/app/assets/stylesheets/sessions.scss */
+.content-index > p {
+  line-height: 150%;
+  padding-bottom: 20px;
+}
+
+/* line 20, /home/chris/Code/dasboot-rails/app/assets/stylesheets/sessions.scss */
+.content-index > p > a {
+  color: #223469;
+  font-weight: bold;
+}
+
+/* line 25, /home/chris/Code/dasboot-rails/app/assets/stylesheets/sessions.scss */
+.content-index:last-child {
+  padding-bottom: 0px;
+}
+
+/* line 29, /home/chris/Code/dasboot-rails/app/assets/stylesheets/sessions.scss */
+strong {
+  color: #223469;
+}

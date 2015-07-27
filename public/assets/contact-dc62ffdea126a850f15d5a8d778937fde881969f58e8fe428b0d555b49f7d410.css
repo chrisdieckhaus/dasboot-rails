@@ -1,0 +1,15 @@
+/* line 1, /home/chris/Code/dasboot-rails/app/assets/stylesheets/contact.scss */
+body {
+  background: url("tent1.jpg") no-repeat fixed center center/cover;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+/* line 11, /home/chris/Code/dasboot-rails/app/assets/stylesheets/contact.scss */
+h4 {
+  color: #223469;
+}

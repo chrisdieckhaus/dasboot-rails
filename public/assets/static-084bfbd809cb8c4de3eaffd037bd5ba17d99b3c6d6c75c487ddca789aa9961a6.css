@@ -1,0 +1,26 @@
+/* line 5, /home/chris/Code/dasboot-rails/app/assets/stylesheets/static.scss */
+body {
+  background: url("tent3.jpg") no-repeat fixed center center/cover;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+/* line 15, /home/chris/Code/dasboot-rails/app/assets/stylesheets/static.scss */
+.content-bar > p > a {
+  font-weight: bold;
+}
+
+/* line 19, /home/chris/Code/dasboot-rails/app/assets/stylesheets/static.scss */
+.content-about > p {
+  line-height: 170%;
+  padding-bottom: 20px;
+}
+
+/* line 24, /home/chris/Code/dasboot-rails/app/assets/stylesheets/static.scss */
+.content-about:last-child {
+  padding-bottom: 0;
+}
