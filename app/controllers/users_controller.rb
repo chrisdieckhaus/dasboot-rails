@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
+			UserMailer.welcome_email(@user).deliver
 			redirect_to '/profile'
 		else
 			render '/profile'
