@@ -1,9 +1,9 @@
 class UserMailer < ApplicationMailer
-	default from: 'dasboot.tent@gmail.com'
+	default from: 'Das Boot'
 
-	def welcome_email(user)
+	def create_shift(user, shift)
 		@user = user
-		@url = 'http://example.com/login'
-		mail(to: 'christopherdieckhaus@gmail.com', subject: "hi")
+		@shift = shift
+		mail(to: @user.email, subject: "You have been assigned to a new shift")
 	end
 end

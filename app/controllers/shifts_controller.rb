@@ -29,6 +29,8 @@ class ShiftsController < ApplicationController
 		@shift.schedule_id = shift_p["schedule_id"]
 		@shift.night_shift = shift_p["night_shift"]
 		if good_times && @shift.save
+			@user = User.find(shift_p[:user_id])
+			UserMailer.create_shift(@user, @shift).deliver
 			redirect_to schedule_path(shift_p['schedule_id'])
 		else 
 			redirect_to schedule_shifts_new_path(shift_p['schedule_id']), notice: 'Error.'
