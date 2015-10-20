@@ -12,4 +12,12 @@ class UserMailer < ApplicationMailer
 		@shift = shift
 		mail(to: @user.email, subject: "Your shift has been changed")
 	end
+
+	def create_schedule(schedule)
+		@schedule = schedule
+		@users = User.all
+		@users.each do |user|
+			mail(to: user.email, subject: "#{@schedule.schedule_name} schedule")
+		end
+	end
 end
