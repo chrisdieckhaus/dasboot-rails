@@ -20,4 +20,13 @@ class UserMailer < ApplicationMailer
 			mail(to: user.email, subject: "#{@schedule.schedule_name} schedule")
 		end
 	end
+
+	def sub_requested(user, shift)
+		@user = user
+		@shift = shift
+		@users = User.all
+		@users.each do |u|
+			mail(to: u.email, subject: "Sub requested by #{@user.first_name} #{@user.last_name}")
+		end
+	end
 end
