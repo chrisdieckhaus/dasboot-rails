@@ -27,6 +27,8 @@ class AvailabilitiesController < ApplicationController
 		@av.end_time = end_time
 		@av.save
 		if @av.save 
+			@user = User.find(@av.user_id)
+			UserMailer.update_availability(@user).deliver_later
 		    redirect_to '/profile'
 		else 
 		    redirect_to new_availability_path 
@@ -47,6 +49,8 @@ class AvailabilitiesController < ApplicationController
 	  @av.end_time = end_time
 		@av.save
 		if @av.save
+			@user = User.find(@av.user_id)
+			UserMailer.update_availability(@user).deliver_later
 			redirect_to '/profile'
 		else
 			render '/availabilities/edit/#{params[:id]}'

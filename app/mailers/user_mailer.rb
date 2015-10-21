@@ -36,4 +36,12 @@ class UserMailer < ApplicationMailer
 		@shift = shift
 		mail(to: @user.email, subject: "#{@user.first_name} #{@user.last_name} has accepted your sub request")
 	end
+
+	def update_availability(user)
+		@user = user
+		@admins = User.where(role: "admin")
+		@admins.each do |admin|
+			mail(to: admin.email, subject: "#{@user.first_name} #{@user.last_name} updated their availability")
+		end
+	end
 end
