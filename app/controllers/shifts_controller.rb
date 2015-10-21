@@ -82,9 +82,12 @@ class ShiftsController < ApplicationController
   	def accept_sub
   		@shift = Shift.find(params[:shift_id])
   		@schedule = Schedule.find(params[:schedule_id])
+  		@old_owner = User.find(@shift.user_id)
   		@shift.sub_request = '0'
   		@shift.user_id = current_user.id
   		@shift.save
+  		@user = User.find(@shift.user_id)
+  		UserMailer.sub_accepted(@user, @old_owner, @shift).deliver_later
   		redirect_to schedule_path(@schedule)
   	end
 

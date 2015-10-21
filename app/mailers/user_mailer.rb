@@ -29,4 +29,11 @@ class UserMailer < ApplicationMailer
 			mail(to: u.email, subject: "Sub requested by #{@user.first_name} #{@user.last_name}")
 		end
 	end
+
+	def sub_accepted(user, accepter, shift)
+		@user = user
+		@accepter = accepter
+		@shift = shift
+		mail(to: @user.email, subject: "#{@user.first_name} #{@user.last_name} has accepted your sub request")
+	end
 end
