@@ -1,0 +1,19 @@
+Hi <%= @user.first_name %>,
+
+Your shift has been changed to:
+
+<% if @shift.night_shift? %>
+<% if @shift.weekend_night? %>
+<%= @shift.start_time.yesterday.strftime('%A night (%-m/%-d)') %>*
+<% else %>
+<%= @shift.start_time.strftime('%A night (%-m/%-d)') %>
+<% end %>
+<% else %>
+<%= @shift.start_time.strftime('%A %-m/%-d') %>
+<% end %>
+
+<%= @shift.start_time.strftime('%l:%M%P') %>-<%= @shift.end_time.strftime('%l:%M%P') %>
+
+Cheers,
+
+Chris

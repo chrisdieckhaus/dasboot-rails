@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      <%= @user.first_name %> <%= @user.last_name %> requests a sub for the following shift:
+    </p>
+    <p>
+    	<% if @shift.night_shift? %>
+			<% if @shift.weekend_night? %>
+				<%= @shift.start_time.yesterday.strftime('%A night (%-m/%-d)') %>*				
+			<% else %>
+				<%= @shift.start_time.strftime('%A night (%-m/%-d)') %>
+			<% end %>
+		<% else %>
+			<%= @shift.start_time.strftime('%A %-m/%-d') %>
+		<% end %>
+   		<%= @shift.start_time.strftime('%l:%M%P') %>-<%= @shift.end_time.strftime('%l:%M%P') %>
+    </p>
+    <p>
+    	Please <%= link_to "click here", "https://dasboot.herokuapp.com/schedules/#{@shift.schedule_id}" %> to accept the sub.
+    </p>
+  </body>
+</html>

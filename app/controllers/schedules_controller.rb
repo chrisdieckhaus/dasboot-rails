@@ -18,9 +18,10 @@ class SchedulesController < ApplicationController
 		@schedule.end_date = end_date
 		@schedule.schedule_name = sched[:schedule_name]
 		if @schedule.save 
-		redirect_to '/schedules' 
+			UserMailer.create_schedule(@schedule).deliver_later
+			redirect_to '/schedules' 
 		else 
-		redirect_to '/schedules/new' 
+			redirect_to '/schedules/new' 
 		end 
 	end
 

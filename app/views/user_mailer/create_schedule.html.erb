@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      A new schedule has been created:
+    </p>
+    <p>
+    	<strong><%= @schedule.schedule_name %>: </strong>
+      <%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %>
+    </p>
+    <p>
+    	Please <%= link_to "log in", "https://dasboot.herokuapp.com/login" %> for more details.
+    </p>
+  </body>
+</html>

@@ -29,6 +29,8 @@ class ShiftsController < ApplicationController
 		@shift.schedule_id = shift_p["schedule_id"]
 		@shift.night_shift = shift_p["night_shift"]
 		if good_times && @shift.save
+			@user = User.find(shift_p[:user_id])
+			UserMailer.create_shift(@user, @shift).deliver_later
 			redirect_to schedule_path(shift_p['schedule_id'])
 		else 
 			redirect_to schedule_shifts_new_path(shift_p['schedule_id']), notice: 'Error.'
@@ -52,6 +54,8 @@ class ShiftsController < ApplicationController
 		@shift.schedule_id = shift_p["schedule_id"]
 		@shift.night_shift = shift_p["night_shift"]
 		if good_times && @shift.save
+			@user = User.find(shift_p[:user_id])
+			UserMailer.update_shift(@user, @shift).deliver_later
 			redirect_to schedule_path(shift_p['schedule_id'])
 		else 
 			redirect_to edit_shift_path(shift_p['schedule_id']), notice: 'Error.'
@@ -70,15 +74,20 @@ class ShiftsController < ApplicationController
   		@schedule = @shift.schedule_id
   		@shift.sub_request = '1'
   		@shift.save
+  		@user = User.find(@shift.user_id)
+		UserMailer.sub_requested(@user, @shift).deliver_later
   		redirect_to schedule_path(@schedule)
   	end
 
   	def accept_sub
   		@shift = Shift.find(params[:shift_id])
   		@schedule = Schedule.find(params[:schedule_id])
+  		@old_owner = User.find(@shift.user_id)
   		@shift.sub_request = '0'
   		@shift.user_id = current_user.id
   		@shift.save
+  		@user = User.find(@shift.user_id)
+  		UserMailer.sub_accepted(@user, @old_owner, @shift).deliver_later
   		redirect_to schedule_path(@schedule)
   	end
 
