@@ -75,7 +75,7 @@ class ShiftsController < ApplicationController
   		@shift.sub_request = '1'
   		@shift.save
   		@user = User.find(@shift.user_id)
-		UserMailer.sub_requested(@user, @shift).deliver_later
+		#UserMailer.sub_requested(@user, @shift).deliver_later
   		redirect_to schedule_path(@schedule)
   	end
 
@@ -87,7 +87,7 @@ class ShiftsController < ApplicationController
   		@shift.user_id = current_user.id
   		@shift.save
   		@user = User.find(@shift.user_id)
-  		UserMailer.sub_accepted(@user, @old_owner, @shift).deliver_later
+  		#UserMailer.sub_accepted(@user, @old_owner, @shift).deliver_later
   		redirect_to schedule_path(@schedule)
   	end
 
