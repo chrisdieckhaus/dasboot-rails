@@ -30,7 +30,7 @@ class ShiftsController < ApplicationController
 		@shift.night_shift = shift_p["night_shift"]
 		if good_times && @shift.save
 			@user = User.find(shift_p[:user_id])
-			UserMailer.create_shift(@user, @shift).deliver_later
+			#UserMailer.create_shift(@user, @shift).deliver_later
 			redirect_to schedule_path(shift_p['schedule_id'])
 		else 
 			redirect_to schedule_shifts_new_path(shift_p['schedule_id']), notice: 'Error.'
@@ -55,7 +55,7 @@ class ShiftsController < ApplicationController
 		@shift.night_shift = shift_p["night_shift"]
 		if good_times && @shift.save
 			@user = User.find(shift_p[:user_id])
-			UserMailer.update_shift(@user, @shift).deliver_later
+			#UserMailer.update_shift(@user, @shift).deliver_later
 			redirect_to schedule_path(shift_p['schedule_id'])
 		else 
 			redirect_to edit_shift_path(shift_p['schedule_id']), notice: 'Error.'
