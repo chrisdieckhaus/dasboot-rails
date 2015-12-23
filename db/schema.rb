@@ -25,17 +25,6 @@ ActiveRecord::Schema.define(version: 20150715003304) do
 
   add_index "availabilities", ["user_id"], name: "index_availabilities_on_user_id"
 
-  create_table "days", force: :cascade do |t|
-    t.integer  "availability_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "day_name"
-    t.date     "day_date"
-    t.text     "times"
-  end
-
-  add_index "days", ["availability_id"], name: "index_days_on_availability_id"
-
   create_table "schedules", force: :cascade do |t|
     t.date     "start_date"
     t.date     "end_date"
