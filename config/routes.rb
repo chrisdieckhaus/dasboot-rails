@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'users#index'
 
-  resources :availabilities
+  resources :availabilities do
+    get 'copy' => 'availabilities#copy'
+  end
 
   resources :schedules do
     get 'shifts/new' => 'shifts#new'
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
 
   get 'subreq' => 'shifts#request_sub'
   get 'subaccept' => 'shifts#accept_sub'
+  get 'copytime' => 'availabilities#copy_time'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
