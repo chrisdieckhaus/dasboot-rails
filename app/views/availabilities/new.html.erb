@@ -33,19 +33,16 @@ $(document).ready(function() {
 	<div class="content-bar list-group">
 		<%= bootstrap_form_for(@av) do |f| %>
 			<div class="row pad">
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<%= f.text_field :start_time, as: :datepicker, label: 'Start date', id: 'from', required: true %>
+				<div class="col-md-12 col-sm-12 col-xs-12 alert alert-info">
+					<small>Make sure all times are in the following format: '9:00am-11:00am, 1:00pm-3:00pm'. Please do not forget to separate each time period by a comma, and insert a hyphen in between the start and end times. Please round times to nearest :15 minute increment. If the time period is in the early morning hours (ex. 1:00am-2:30am), make sure you assign it to the right day.</small>
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-12">
-					<%= f.text_field :end_time, as: :datepicker, label: 'End date', id: 'to', required: true %>
+					<%= f.text_field :start_time, as: :datepicker, label: 'Date', id: 'from', required: true %>
 				</div>
 			</div>
 			<div class="row pad">
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<%= f.datetime_select :start_time, :discard_year => true, :discard_month => true, :ampm => true, :default => { :minute => 00 }, :minute_step => 15, inline: true %>
-				</div>
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<%= f.datetime_select :end_time, :discard_year => true, :discard_month => true, :ampm => true, :default => { :minute => 00 }, :minute_step => 15 %>
+				<div class="col-md-10 col-sm-10 col-xs-12">
+					<%= f.text_area :times, label: 'Times', required: true, rows: 5 %>
 				</div>
 			</div>
 			<br>

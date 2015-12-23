@@ -6,6 +6,9 @@
 		<%= av.start_time.strftime('%l:%M%P') %> - <%= av.end_time.strftime('%l:%M%P') %>
 	</td>
 	<td>
+		<%= av.times %>
+	</td>
+	<td>
 		<%= link_to 'Edit', edit_availability_path(av) if current_user.role == 'admin' || current_user.id == av.user_id %>
 	</td>
 	<td>
