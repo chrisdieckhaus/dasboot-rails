@@ -80,6 +80,19 @@ class AvailabilitiesController < ApplicationController
   		@user = User.find(params[:id])
   	end
 
+  	def copy_time
+  		puts "hi"
+  		puts params
+  		av_to_copy = Availability.find(params[:avail_id])
+  		puts av_to_copy
+  		@new_av = Availability.new(av_params)
+  		@new_av.user_id = params[:user_id]
+  		@new_av.start_time = av_to_copy.start_time+1.week.to_i
+  		@new_av.end_time = av_to_copy.end_time+1.week.to_i
+  		@new_av.save
+  		redirect_to availabilities_path
+  	end
+
   	def mine
   	end
 
