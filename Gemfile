@@ -28,6 +28,9 @@ gem 'bootstrap_form'
 
 gem 'rails_12factor', group: :production
 
+#required for Windows
+gem 'tzinfo-data'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
