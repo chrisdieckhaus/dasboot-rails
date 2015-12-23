@@ -78,7 +78,7 @@
 	<% @user.availabilities.sort_by{|a| a.start_time }.each do |av| %>
 		<div class="content-bar list-group">
 			<div class="row pad row-highlighter">
-				<div class="col-lg-5 col-sm-12">		
+				<div class="col-lg-4 col-sm-12">		
 					<%= av.start_time.strftime('%A %-m/%-d') %>
 				</div>
 				<div class="col-lg-5 col-sm-12">		
@@ -88,6 +88,11 @@
 					<div class="col-lg-1 col-sm-offset-0 col-xs-1 col-xs-offset-4" style="text-align:center;">
 						<%= link_to edit_availability_path(av), title: "Edit Availability" do %>
 							<i class="fa fa-edit"></i>
+						<% end %>
+					</div>
+					<div class="col-lg-1 col-sm-offset-0 col-cs-1 col-xs-offeset-4" style="text-align:center;">
+						<%= link_to :controller => "availabilities", :action => "copy_time", :params => {"user_id" => current_user, "avail_id" => av} do %>
+							<i class="fa fa-files-o" title="Repeat next week"></i>
 						<% end %>
 					</div>
 					<div class="col-lg-1 col-xs-1" style="text-align:center;">
