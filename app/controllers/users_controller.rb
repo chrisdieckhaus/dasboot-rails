@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 	  @user = User.new(user_params) 
 	  if @user.save 
 	    session[:user_id] = @user.id 
+	    UserMailer.welcome_email(@user).deliver_later
 	    redirect_to '/' 
 	  else 
 	    redirect_to '/signup' 

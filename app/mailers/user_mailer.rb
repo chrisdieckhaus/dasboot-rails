@@ -45,4 +45,12 @@ class UserMailer < ApplicationMailer
 			mail(to: admin.email, subject: "#{@user.first_name} #{@user.last_name} updated their availability")
 		end
 	end
+
+	def welcome_email(user)
+		@user = user
+		@admins = User.where(role: "admin")
+		@admins.each do |admin|
+			mail(to: admin.email, subject: "#{@user.first_name} #{@user.last_name} has joined Das Boot")
+		end
+	end
 end
