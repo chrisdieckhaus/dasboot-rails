@@ -18,8 +18,8 @@ class ShiftsController < ApplicationController
 		mm_e = shift_p["end_time"].split("/")[0]
 		@shift = Shift.new(shift_params) 
 		date = Date.new yyyy_s.to_i, mm_s.to_i, dd_s.to_i
-		start_time = DateTime.new yyyy_s.to_i, mm_s.to_i, dd_s.to_i, shift_p["start_time(4i)"].to_i, shift_p["start_time(5i)"].to_i
-		end_time = DateTime.new yyyy_e.to_i, mm_e.to_i, dd_e.to_i, shift_p["end_time(4i)"].to_i, shift_p["end_time(5i)"].to_i
+		start_time = Time.new yyyy_s.to_i, mm_s.to_i, dd_s.to_i, shift_p["start_time(4i)"].to_i, shift_p["start_time(5i)"].to_i
+		end_time = Time.new yyyy_e.to_i, mm_e.to_i, dd_e.to_i, shift_p["end_time(4i)"].to_i, shift_p["end_time(5i)"].to_i
 		puts start_time
 		puts end_time
 		good_times = end_time >= start_time

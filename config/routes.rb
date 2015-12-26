@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :schedules do
     get 'shifts/new' => 'shifts#new'
+    get 'publish' => 'schedules#publish_schedule'
   end
   
   resources :shifts 
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   get 'subreq' => 'shifts#request_sub'
   get 'subaccept' => 'shifts#accept_sub'
   get 'copytime' => 'availabilities#copy_time'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

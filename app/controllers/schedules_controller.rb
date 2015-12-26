@@ -19,9 +19,9 @@ class SchedulesController < ApplicationController
 		@schedule.schedule_name = sched[:schedule_name]
 		if @schedule.save 
 			#UserMailer.create_schedule(@schedule).deliver_later
-			redirect_to '/schedules' 
+			redirect_to schedules_path 
 		else 
-			redirect_to '/schedules/new' 
+			redirect_to new_schedule_path 
 		end 
 	end
 
@@ -34,7 +34,7 @@ class SchedulesController < ApplicationController
 		@schedule.end_date = end_date
 		@schedule.schedule_name = sched[:schedule_name]
 		if @schedule.save
-			redirect_to '/schedules'
+			redirect_to schedules_path
 		else
 			render '/schedules/edit/#{params[:id]}'
 		end
@@ -47,11 +47,17 @@ class SchedulesController < ApplicationController
 	def destroy
 		@schedule = Schedule.find(params[:id])
 		@schedule.destroy
-		redirect_to '/schedules'
+		redirect_to schedules_path
 	end
 
 	def show
   		@schedule = Schedule.find(params[:id])
+  	end
+
+  	def publish_schedule
+  		@schedule = Schedule.find(params[:schedule_id])
+  		UserMailer.create_schedule(@schedule).deliver_later
+  		redirect_to schedule_path(@schedule.id)
   	end
 
 	private

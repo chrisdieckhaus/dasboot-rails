@@ -17,6 +17,7 @@ class UserMailer < ApplicationMailer
 		@schedule = schedule
 		@users = User.all
 		@users.each do |user|
+			@u = user
 			mail(to: user.email, subject: "#{@schedule.schedule_name} schedule")
 		end
 	end

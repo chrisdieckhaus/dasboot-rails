@@ -10,6 +10,9 @@
 				<%= link_to schedule_shifts_new_path(@schedule), title: "New Shift", class: 'btn-new-action' do %>
 					<i class="fa fa-plus"></i>
 				<% end %>
+				<%= link_to schedule_publish_path(@schedule.id), title: "Publish Schedule", class: 'btn-new-action' do %>
+					<i class="fa fa-envelope-o"></i>
+				<% end %>
 			</span>
 		<% end %>
 		</h1>

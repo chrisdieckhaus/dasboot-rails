@@ -12,6 +12,19 @@
       <%= @schedule.start_date.strftime('%A %-m/%-d') %> - <%= @schedule.end_date.strftime('%A %-m/%-d') %>
     </p>
     <p>
+      <%= @u.first_name %>, your shifts are:
+      <ul>
+      <% @schedule.shifts.sort_by{|s| s.start_time }.each do |shift| %>
+        <% if shift.user_id == @u.id %>
+          <li>
+            <%= shift.start_time.strftime('%A %-m/%-d') %> 
+            <%= shift.start_time.strftime('%l:%M%P') %> - <%= shift.end_time.strftime('%l:%M%P') %>
+          </li>
+        <% end %>
+      <% end %>
+      </ul>
+    </p>
+    <p>
     	Please <%= link_to "log in", "https://dasboot.herokuapp.com/login" %> for more details.
     </p>
   </body>
