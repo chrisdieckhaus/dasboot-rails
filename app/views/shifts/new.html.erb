@@ -15,7 +15,7 @@
 			<%= f.hidden_field :schedule_id, :value => @schedule.id %>
 			<div class="row pad">
 				<div class="col-md-4 col-sm-6 col-xs-12">
-					<%= f.collection_select(:user_id, User.all, :id, :first_name, :prompt => true, :required=> true) %>
+					<%= f.collection_select(:user_id, User.order('first_name'), :id, :first_name, :prompt => true, :required=> true) %>
 				</div>
 			</div>
 			<div class="row pad">
